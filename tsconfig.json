@@ -18,6 +18,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "np-color-picker": [
+        "dist/np-color-picker"
+      ],
+      "np-color-picker/*": [
+        "dist/np-color-picker/*"
+      ]
+    }
   }
 }

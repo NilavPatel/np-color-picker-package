@@ -115,6 +115,41 @@
           }
         }
       }
+    },
+    "np-color-picker": {
+      "projectType": "library",
+      "root": "projects/np-color-picker",
+      "sourceRoot": "projects/np-color-picker/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/np-color-picker/tsconfig.lib.json",
+            "project": "projects/np-color-picker/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/np-color-picker/src/test.ts",
+            "tsConfig": "projects/np-color-picker/tsconfig.spec.json",
+            "karmaConfig": "projects/np-color-picker/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/np-color-picker/tsconfig.lib.json",
+              "projects/np-color-picker/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "np-color-picker-package"
 }
