@@ -1,8 +1,8 @@
 <div class="np-color-picker">
     <div>
         <input class="color-code-input" [(ngModel)]="value" name="txtSelectedColor" class="np-colorpicker-text"
-            maxlength="7">
-        <button class="np-colorpicker-button" (click)="_toggleColorPicker()"
+            maxlength="7" (change)="_onChangeColor()">
+        <button type="button" class="np-colorpicker-button" (click)="_toggleColorPicker()"
             [ngStyle]="{'background-color': value}"></button>
     </div>
     <div class="color-div" *ngIf="_isOpen">

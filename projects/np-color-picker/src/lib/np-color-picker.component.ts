@@ -8,13 +8,9 @@ import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges } from '@
 export class NpColorPickerComponent implements OnInit {
 
   defaultColors: string[];
-
   @Input() value: string;
-
   @Input() colorList: string[];
-
   @Output() onChange: EventEmitter<any> = new EventEmitter();
-
   _isOpen: boolean = false;
 
   constructor() {
@@ -50,7 +46,7 @@ export class NpColorPickerComponent implements OnInit {
   _onSelectColorFromDefault(color: string) {
     this.value = color;
     this._isOpen = false;
-    this.onChange.emit(color);
+    this.onChange.emit(this.value);
   }
 
   _toggleColorPicker() {
@@ -59,5 +55,9 @@ export class NpColorPickerComponent implements OnInit {
 
   _close() {
     this._isOpen = false;
+  }
+
+  _onChangeColor() {
+    this.onChange.emit(this.value);
   }
 }
