@@ -1,5 +1,5 @@
 {
-  "name": "np-color-picker",
+  "name": "@nilavpatel/np-color-picker",
   "version": "0.0.1",
   "private": false,
   "author": {
@@ -8,9 +8,10 @@
   "keywords": [
     "angular",
     "colorpicker",
-    "color-selector",
+    "color-chooser",
     "typescript",
-    "color-picker"
+    "color-picker",
+    "custom-component"
   ],
   "repository": {
     "type": "git",
