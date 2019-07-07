@@ -1,6 +1,6 @@
 # np-color-picker component
 
-![image login](https://github.com/NilavPatel/np-color-picker/blob/master/src/assets/images/image1.PNG)
+![image login](https://github.com/NilavPatel/np-color-picker-package/blob/master/src/assets/images/image1.PNG)
 
 ````
 Angular 8 UI Component
