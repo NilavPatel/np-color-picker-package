@@ -1,15 +1,15 @@
 <form>
     <div class="row">
         <div class="col-lg-4">
-            <np-color-picker [value]="currentColor">
+            <np-color-picker [(value)]="currentColor">
+            </np-color-picker>            
+        </div>
+        <div class="col-lg-4">
+            <np-color-picker [(value)]="currentColor1">
             </np-color-picker>
         </div>
         <div class="col-lg-4">
-            <np-color-picker [value]="currentColor1">
-            </np-color-picker>
-        </div>
-        <div class="col-lg-4">
-            <np-color-picker [value]="currentColor2" [colorList]="colorList" (onChange)="onColorSelect($event)">
+            <np-color-picker [(value)]="currentColor2" [colorList]="colorList" (onChange)="onColorSelect($event)">
             </np-color-picker>
         </div>
     </div>
