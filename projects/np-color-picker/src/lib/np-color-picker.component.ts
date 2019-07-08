@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'np-color-picker',
@@ -6,15 +6,18 @@ import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges } from '@
   styleUrls: ['np-color-picker.component.css']
 })
 export class NpColorPickerComponent implements OnInit {
-
-  defaultColors: string[];
-  @Input() value: string;
+  
+  @Input() value: string;  
   @Input() colorList: string[];
   @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Input() disabled: boolean;
+  
+  _defaultColors: string[];
+  _value: string;
   _isOpen: boolean = false;
 
   constructor() {
-    this.defaultColors = [
+    this._defaultColors = [
       '#FFA07A', '#FA8072', '#E9967A', '#F08080', '#CD5C5C', '#DC143C', '#B22222', '#FF0000', '#8B0000',
       '#FF7F50', '#FF6347', '#FF4500', '#FFD700', '#FFA500', '#FF8C00', '#FFFFE0', '#FFFACD', '#FAFAD2',
       '#FFEFD5', '#FFE4B5', '#FFDAB9', '#EEE8AA', '#F0E68C', '#BDB76B', '#FFFF00', '#7CFC00', '#7FFF00',
@@ -35,18 +38,17 @@ export class NpColorPickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.value == undefined || this.value == null || this.value.length == 0) {
-      this.value = "#FFFFFF";
-    }
+    this._value = this.value;
     if (this.colorList != undefined && this.colorList != null && this.colorList.length > 0) {
-      this.defaultColors = this.colorList;
+      this._defaultColors = this.colorList;
     }
   }
 
   _onSelectColorFromDefault(color: string) {
-    this.value = color;
+    this._value = color;
     this._isOpen = false;
-    this.onChange.emit(this.value);
+    this.value = this._value;
+    this.onChange.emit(this._value);
   }
 
   _toggleColorPicker() {
@@ -58,6 +60,8 @@ export class NpColorPickerComponent implements OnInit {
   }
 
   _onChangeColor() {
-    this.onChange.emit(this.value);
+    debugger;
+    this.value = this._value;
+    this.onChange.emit(this._value);
   }
 }

@@ -15,6 +15,9 @@ Angular 8 UI Component
 
 2.  colorList : string[]
     array of string, list of colors to available
+
+3.  disabled
+    true/false - set component disabled
 ````
 
 ## Methods

@@ -7,6 +7,7 @@
         <div class="col-lg-4">
             <np-color-picker [(value)]="currentColor1">
             </np-color-picker>
+            {{currentColor1}}
         </div>
         <div class="col-lg-4">
             <np-color-picker [(value)]="currentColor2" [colorList]="colorList" (onChange)="onColorSelect($event)">
