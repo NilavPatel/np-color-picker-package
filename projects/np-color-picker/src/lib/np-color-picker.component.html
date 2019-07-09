@@ -1,13 +1,13 @@
 <div class="np-component-main">
-    <div>
+    <div class="np-input-group">
         <input class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor" class="np-colorpicker-text"
-            maxlength="7" (change)="_onChangeColor()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled">
+            maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled">
         <button type="button" class="np-component-button" (click)="_toggleColorPicker()"
             [ngStyle]="{'background-color': _value}" [disabled]="disabled"></button>
     </div>
     <div class="np-component-div" *ngIf="_isOpen">
-        <div *ngFor="let defColor of _defaultColors" class="np-color-block" [ngStyle]="{'background-color': defColor}"
-            (click)="_onSelectColorFromDefault(defColor)"></div>
+        <div *ngFor="let defColor of _colorList" class="np-color-block" [ngStyle]="{'background-color': defColor}"
+            (click)="_onClickColor(defColor)"></div>
         <div (click)="_close()" class="np-close-button">X</div>
     </div>
 </div>
