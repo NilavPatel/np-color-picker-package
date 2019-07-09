@@ -13,6 +13,7 @@ export class NpColorPickerComponent implements OnInit {
 
   @Input() value: string
   @Output() valueChange = new EventEmitter();
+  @Input() defaultOpen :boolean;
   @Input() colorList: string[];
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Input() disabled: boolean;
@@ -44,8 +45,11 @@ export class NpColorPickerComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.value != undefined) {
+    if (changes.value != undefined && changes.value.currentValue != this._value) {
       this._value = changes.value.currentValue;
+      if (this.onChange != undefined) {
+        this.onChange.emit(this._value);
+      }
     }
     if (changes.colorList != undefined) {
       this._colorList = changes.colorList.currentValue;

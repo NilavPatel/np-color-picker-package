@@ -18,6 +18,10 @@ Angular 8 UI Component
 
 3.  disabled
     true/false - set component disabled
+
+4.  defaultOpen
+    true/false
+    default open or not.    
 ````
 
 ## Methods

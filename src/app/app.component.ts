@@ -12,6 +12,7 @@ export class AppComponent {
   currentColor: string;
   currentColor1: string = "#00FF00";
   currentColor2: string;
+  currentColor3: string;
   colorList2: string[] = ['#FFFFFF', '#000000', '#ff0000', '#ff4000', '#ff8000'];
 
   onColorSelect(value: string) {

@@ -34,15 +34,24 @@
     border: 1px solid red;
 }
 
-.np-color-block{
-    height:15px;
-    width:15px;
-    margin:2px;
+.np-color-block {
+    height: 15px;
+    width: 15px;
+    margin: 2px;
     display: inline-block;
-    border:1px solid black;
+    border: 1px solid black;
     cursor: pointer;
 }
 
-.np-color-block:hover{
+.np-color-block:hover {
+    transform: scale(1.5);
+}
+
+.np-open-component {
+    position: relative;
+    z-index: auto;
+}
+
+.np-selected {
     transform: scale(1.5);
 }
