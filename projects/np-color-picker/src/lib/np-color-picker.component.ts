@@ -47,7 +47,7 @@ export class NpColorPickerComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.value != undefined && changes.value.currentValue != this._value) {
       this._value = changes.value.currentValue;
-      if (this.onChange != undefined) {
+      if (this.onChange != undefined && !changes.value.firstChange) {
         this.onChange.emit(this._value);
       }
     }
