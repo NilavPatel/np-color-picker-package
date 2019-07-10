@@ -3,11 +3,21 @@
         <input class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor" class="np-colorpicker-text"
             maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled">
         <button type="button" class="np-component-button" (click)="_toggleColorPicker()"
-            [ngStyle]="{'background-color': _value}" [disabled]="disabled"></button>
+            [ngStyle]="{'background-color': _value}" [disabled]="disabled">
+            <i class="np-icon icon-eye-dropper"></i>
+        </button>
     </div>
-    <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}">
+    <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}"
+        [ngStyle]="{'height': height ? height : '120px', 'width':width ? width : '200px'}">
+        <div *ngIf="defaultOpen">
+            <span>Selected : {{_value}}</span>
+            <div style="height:20px; width:20px;" [ngStyle]="{'background-color': _value}"></div>
+            <hr>
+        </div>
         <div *ngFor="let defColor of _colorList" class="np-color-block" [ngStyle]="{'background-color': defColor}"
-            (click)="_onClickColor(defColor)" [ngClass]="{'np-selected' : _value == defColor}"></div>
-        <div (click)="_close()" class="np-close-button">X</div>
+            (click)="_onClickColor(defColor)"></div>
+        <div (click)="_close()" class="np-close-button" *ngIf="!defaultOpen">
+            <i class="np-icon icon-close"></i>
+        </div>
     </div>
 </div>

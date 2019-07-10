@@ -3,7 +3,7 @@ import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges } from '@
 @Component({
   selector: 'np-color-picker',
   templateUrl: './np-color-picker.component.html',
-  styleUrls: ['np-color-picker.component.css']
+  styleUrls: ['np-color-picker.component.css', './css/np-font-package.css']
 })
 export class NpColorPickerComponent implements OnInit {
 
@@ -13,10 +13,12 @@ export class NpColorPickerComponent implements OnInit {
 
   @Input() value: string
   @Output() valueChange = new EventEmitter();
-  @Input() defaultOpen :boolean;
+  @Input() defaultOpen: boolean;
   @Input() colorList: string[];
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Input() disabled: boolean;
+  @Input() height: string;
+  @Input() width: string;
 
   constructor() {
   }

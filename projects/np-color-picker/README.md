@@ -22,6 +22,12 @@ Angular 8 UI Component
 4.  defaultOpen
     true/false
     default open or not.    
+
+5.  height
+    string value like '200px', default is '120px'
+
+6.  width
+    string value like '200px', default is '200px'
 ````
 
 ## Methods
