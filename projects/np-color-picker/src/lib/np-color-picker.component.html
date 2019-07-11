@@ -7,17 +7,14 @@
             <i class="np-icon icon-eye-dropper"></i>
         </button>
     </div>
-    <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}"
-        [ngStyle]="{'height': height ? height : '120px', 'width':width ? width : '200px'}">
-        <div *ngIf="defaultOpen">
-            <span>Selected : {{_value}}</span>
-            <div style="height:20px; width:20px;" [ngStyle]="{'background-color': _value}"></div>
-            <hr>
+    <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}">
+        <div>
+            <div>{{_value}}</div>
+            <div [ngStyle]="{'background-color': _value}"></div>
         </div>
-        <div *ngFor="let defColor of _colorList" class="np-color-block" [ngStyle]="{'background-color': defColor}"
-            (click)="_onClickColor(defColor)"></div>
-        <div (click)="_close()" class="np-close-button" *ngIf="!defaultOpen">
-            <i class="np-icon icon-close"></i>
+        <div class="np-color-shades">
+            <canvas class="np-canvas-block" width="150" height="150" (click)="changeColor($event)"></canvas>
+            <canvas class="np-canvas-strip" width="30" height="150" (click)="clickStrip($event)"></canvas>
         </div>
     </div>
 </div>

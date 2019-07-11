@@ -15,12 +15,12 @@
 }
 
 .np-component-div {
-    width: 200px;
+    width: 185px;
     background-color: white;
     position: absolute;
     padding: 10px;
     border: 1px solid #4CAF50;
-    height: 120px;
+    height: 200px;
     overflow-x: auto;
     z-index: 9999;
 }
@@ -52,6 +52,15 @@
     z-index: auto;
 }
 
+.np-canvas-block {
+    padding-right: 5px;
+}
+
 .np-selected {
-    transform: scale(1.5);
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+canvas:hover {
+    cursor: crosshair;
 }

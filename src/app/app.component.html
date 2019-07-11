@@ -9,14 +9,14 @@
             {{currentColor1}}
         </div>
         <div class="col-lg-4">
-            <np-color-picker [(value)]="currentColor2" [colorList]="colorList2" (onChange)="onColorSelect($event)">
+            <np-color-picker [(value)]="currentColor2" (onChange)="onColorSelect($event)">
             </np-color-picker>
             {{currentColor2}}
             <button type="button" (click)="setBlackColor()">Set Black</button>
         </div>
 
         <div class="col-lg-4">
-            <np-color-picker [(value)]="currentColor3" [defaultOpen]=true [height]="'400px'" [width]="'200px'">
+            <np-color-picker [(value)]="currentColor3" [defaultOpen]=true>
             </np-color-picker>
             {{currentColor3}}
         </div>
