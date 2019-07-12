@@ -4,22 +4,20 @@
             maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled">
         <button type="button" class="np-component-button" (click)="_toggleColorPicker()"
             [ngStyle]="{'background-color': _value}" [disabled]="disabled">
-            <i class="np-icon icon-eye-dropper"></i>
+            <i class="{{iconCss}}"></i>
         </button>
     </div>
     <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}">
-        <div>
+        <div class="np-selected">
             <div class="np-selected-block" [ngStyle]="{'background-color': _currentCursorColor}"></div>
             <div class="np-selected-text">{{_currentCursorColor}}</div>
-            <div (click)="_close()" class="np-close-button" *ngIf="!defaultOpen">
-                <i class="np-icon icon-close"></i>
-              </div>            
+            <div (click)="_close()" class="np-close-button" *ngIf="!defaultOpen"> x </div>
         </div>
         <div>
-            <canvas class="np-canvas-block" width="150" height="150" (click)="changeColor($event, true)"
-                (mousemove)="changeColor($event, false)" (mouseleave)="onMouseLeaveBlock($event)"></canvas>
-            <canvas class="np-canvas-strip" width="30" height="150" (click)="clickStrip($event, true)"
-                (mousemove)="clickStrip($event, false)" (mouseleave)="onMouseLeaveStrip($event)"></canvas>
+            <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)"
+                (mousemove)="_changeColor($event, false)" (mouseleave)="_onMouseLeaveBlock($event)"></canvas>
+            <canvas class="np-canvas-strip" width="30" height="200" (click)="_clickStrip($event, true)"
+                (mousemove)="_clickStrip($event, false)" (mouseleave)="_onMouseLeaveStrip($event)"></canvas>
         </div>
     </div>
 </div>

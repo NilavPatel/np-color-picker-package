@@ -18,7 +18,10 @@ Angular 8 UI Component
 
 3.  defaultOpen
     true/false
-    default open or not.    
+    default open or not. 
+
+4.  iconCss
+    give class to show icon in color picker.    
 ````
 
 ## Methods

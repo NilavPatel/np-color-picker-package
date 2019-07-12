@@ -3,7 +3,7 @@
 ![image login](https://github.com/NilavPatel/np-color-picker-package/blob/master/src/assets/images/image1.PNG)
 
 ````
-Angular 8 UI Component
+Angular 8 color picker UI Component
 ````
 
 ````
@@ -21,9 +21,12 @@ Angular 8 UI Component
 3.  defaultOpen
     true/false
     default open or not.    
+
+4.  iconCss
+    give class to show icon in color picker.  
 ````
 
-## Methods
+### Methods
 ````
 1.  onChange
     on change event binding

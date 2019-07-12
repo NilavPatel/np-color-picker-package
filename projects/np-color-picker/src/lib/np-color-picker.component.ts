@@ -1,26 +1,24 @@
 import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
-import { ViewChild, ElementRef } from '@angular/core';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'np-color-picker',
-  templateUrl: './np-color-picker.component.html',
-  styleUrls: ['np-color-picker.component.css', './css/np-font-package.css']
+  templateUrl: 'np-color-picker.component.html',
+  styleUrls: ['np-color-picker.component.css']
 })
 export class NpColorPickerComponent implements OnInit {
 
   _value: string;
   _isOpen: boolean = false;
+  _stripColor: string = "#0000ff";
+  _currentCursorColor: string = "";
 
   @Input() value: string
   @Output() valueChange = new EventEmitter();
   @Input() defaultOpen: boolean;
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Input() disabled: boolean;
-
-  _stripColor: string = "#0000ff";
-  _currentCursorColor: string = "";
-
-  public context: CanvasRenderingContext2D;
+  @Input() iconCss: string;
 
   constructor(private elRef: ElementRef) {
   }
@@ -34,11 +32,11 @@ export class NpColorPickerComponent implements OnInit {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {    
+  ngOnChanges(changes: SimpleChanges) {
     if (changes.value != undefined && changes.value.currentValue != this._value) {
       this._value = changes.value.currentValue;
       this._currentCursorColor = changes.value.currentValue;
-      this._stripColor = changes.value.currentValue;      
+      this._stripColor = changes.value.currentValue;
       if (this.onChange != undefined && !changes.value.firstChange) {
         this.onChange.emit(this._value);
       }
@@ -89,8 +87,8 @@ export class NpColorPickerComponent implements OnInit {
     ctx1.fillStyle = grdBlack;
     ctx1.fillRect(0, 0, 200, 200);
 
-    ctx2.rect(0, 0, 30, 150);
-    var grd1 = ctx2.createLinearGradient(0, 0, 0, 150);
+    ctx2.rect(0, 0, 30, 200);
+    var grd1 = ctx2.createLinearGradient(0, 0, 0, 200);
     grd1.addColorStop(0, 'rgba(255, 0, 0, 1)');
     grd1.addColorStop(0.17, 'rgba(255, 255, 0, 1)');
     grd1.addColorStop(0.34, 'rgba(0, 255, 0, 1)');
@@ -102,45 +100,46 @@ export class NpColorPickerComponent implements OnInit {
     ctx2.fill();
   }
 
-  clickStrip(e: any, isUpdateColor: boolean) {
+  _clickStrip(e: any, isUpdateColor: boolean) {
     var strip = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-strip');
     var ctx2 = strip.getContext('2d');
     var x = e.offsetX;
     var y = e.offsetY;
     var imageData = ctx2.getImageData(x, y, 1, 1).data;
     if (isUpdateColor) {
-      this._stripColor = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
+      this._stripColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
       this._currentCursorColor = this._stripColor;
       this._updateCanvas();
     } else {
-      this._currentCursorColor = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
+      this._currentCursorColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
     }
   }
 
-  changeColor(e: any, isUpdateColor: boolean) {
+  _changeColor(e: any, isUpdateColor: boolean) {
     var block = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-block');
     var ctx1 = block.getContext('2d');
     var x = e.offsetX;
     var y = e.offsetY;
     var imageData = ctx1.getImageData(x, y, 1, 1).data;
     if (isUpdateColor) {
-      this._value = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
+      this._value = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
       this.value = this._value;
       this._currentCursorColor = this._value;
       this.valueChange.emit(this._value);
+      this._close();
     } else {
-      this._currentCursorColor = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
-    }
+      this._currentCursorColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
+    }    
   }
 
-  fullColorHex(r: number, g: number, b: number) {
-    var red = this.rgbToHex(r);
-    var green = this.rgbToHex(g);
-    var blue = this.rgbToHex(b);
+  _fullColorHex(r: number, g: number, b: number) {
+    var red = this._rgbToHex(r);
+    var green = this._rgbToHex(g);
+    var blue = this._rgbToHex(b);
     return "#" + red + green + blue;
   };
 
-  rgbToHex(rgb: number) {
+  _rgbToHex(rgb: number) {
     var hex = Number(rgb).toString(16);
     if (hex.length < 2) {
       hex = "0" + hex;
@@ -148,15 +147,11 @@ export class NpColorPickerComponent implements OnInit {
     return hex;
   };
 
-  onMouseLeaveStrip($event){
+  _onMouseLeaveStrip($event: any) {
     this._currentCursorColor = this._value;
   }
 
-  onMouseLeaveBlock($event){
+  _onMouseLeaveBlock($event: any) {
     this._currentCursorColor = this._value;
-  }
-
-  close(){
-    this._isOpen = false;
   }
 }
