@@ -56,11 +56,23 @@
     padding-right: 5px;
 }
 
-.np-selected {
-    padding: 5px;
-    margin-bottom: 5px;
+.np-selected-text {
+    width: 70%;
+    line-height: 25px;
+    display: inline-block;
+    padding:2px;
+}
+
+.np-selected-block {
+    width: 20%;
+    height: 25px;
+    display: inline-block;
 }
 
 canvas:hover {
     cursor: crosshair;
+}
+
+.np-close-button{
+    width:5%;
 }

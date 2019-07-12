@@ -17,7 +17,8 @@ export class NpColorPickerComponent implements OnInit {
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Input() disabled: boolean;
 
-  _primaryColor: string = "#0000ff";
+  _stripColor: string = "#0000ff";
+  _currentCursorColor: string = "";
 
   public context: CanvasRenderingContext2D;
 
@@ -33,9 +34,11 @@ export class NpColorPickerComponent implements OnInit {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {    
     if (changes.value != undefined && changes.value.currentValue != this._value) {
       this._value = changes.value.currentValue;
+      this._currentCursorColor = changes.value.currentValue;
+      this._stripColor = changes.value.currentValue;      
       if (this.onChange != undefined && !changes.value.firstChange) {
         this.onChange.emit(this._value);
       }
@@ -57,6 +60,8 @@ export class NpColorPickerComponent implements OnInit {
 
   _onInputChange() {
     this.value = this._value;
+    this._currentCursorColor = this._value;
+    this._stripColor = this._value;
     this.valueChange.emit(this._value);
     if (this.onChange != undefined) {
       this.onChange.emit(this._value);
@@ -69,7 +74,7 @@ export class NpColorPickerComponent implements OnInit {
     var ctx1 = block.getContext('2d');
     var ctx2 = strip.getContext('2d');
 
-    ctx1.fillStyle = this._primaryColor.length > 0 ? this._primaryColor : this.value;
+    ctx1.fillStyle = this._stripColor.length > 0 ? this._stripColor : this.value;
     ctx1.fillRect(0, 0, 200, 200);
 
     var grdWhite = ctx2.createLinearGradient(0, 0, 200, 0);
@@ -97,25 +102,35 @@ export class NpColorPickerComponent implements OnInit {
     ctx2.fill();
   }
 
-  clickStrip(e: any) {
+  clickStrip(e: any, isUpdateColor: boolean) {
     var strip = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-strip');
     var ctx2 = strip.getContext('2d');
     var x = e.offsetX;
     var y = e.offsetY;
     var imageData = ctx2.getImageData(x, y, 1, 1).data;
-    this._primaryColor = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
-    this._updateCanvas();
+    if (isUpdateColor) {
+      this._stripColor = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
+      this._currentCursorColor = this._stripColor;
+      this._updateCanvas();
+    } else {
+      this._currentCursorColor = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
+    }
   }
 
-  changeColor(e: any) {
+  changeColor(e: any, isUpdateColor: boolean) {
     var block = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-block');
     var ctx1 = block.getContext('2d');
     var x = e.offsetX;
     var y = e.offsetY;
     var imageData = ctx1.getImageData(x, y, 1, 1).data;
-    this._value = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
-    this.value = this._value;
-    this.valueChange.emit(this._value);
+    if (isUpdateColor) {
+      this._value = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
+      this.value = this._value;
+      this._currentCursorColor = this._value;
+      this.valueChange.emit(this._value);
+    } else {
+      this._currentCursorColor = this.fullColorHex(imageData[0], imageData[1], imageData[2]);
+    }
   }
 
   fullColorHex(r: number, g: number, b: number) {
@@ -132,4 +147,16 @@ export class NpColorPickerComponent implements OnInit {
     }
     return hex;
   };
+
+  onMouseLeaveStrip($event){
+    this._currentCursorColor = this._value;
+  }
+
+  onMouseLeaveBlock($event){
+    this._currentCursorColor = this._value;
+  }
+
+  close(){
+    this._isOpen = false;
+  }
 }

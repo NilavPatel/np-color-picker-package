@@ -9,12 +9,17 @@
     </div>
     <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}">
         <div>
-            <div>{{_value}}</div>
-            <div [ngStyle]="{'background-color': _value}"></div>
+            <div class="np-selected-block" [ngStyle]="{'background-color': _currentCursorColor}"></div>
+            <div class="np-selected-text">{{_currentCursorColor}}</div>
+            <div (click)="_close()" class="np-close-button" *ngIf="!defaultOpen">
+                <i class="np-icon icon-close"></i>
+              </div>            
         </div>
-        <div class="np-color-shades">
-            <canvas class="np-canvas-block" width="150" height="150" (click)="changeColor($event)"></canvas>
-            <canvas class="np-canvas-strip" width="30" height="150" (click)="clickStrip($event)"></canvas>
+        <div>
+            <canvas class="np-canvas-block" width="150" height="150" (click)="changeColor($event, true)"
+                (mousemove)="changeColor($event, false)" (mouseleave)="onMouseLeaveBlock($event)"></canvas>
+            <canvas class="np-canvas-strip" width="30" height="150" (click)="clickStrip($event, true)"
+                (mousemove)="clickStrip($event, false)" (mouseleave)="onMouseLeaveStrip($event)"></canvas>
         </div>
     </div>
 </div>

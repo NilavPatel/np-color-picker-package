@@ -7,7 +7,7 @@ Angular 8 UI Component
 ````
 
 ````
-<np-color-picker [value]="currentColor2" [colorList]="colorList" (onChange)="onColorSelect($event)"></np-color-picker>
+<np-color-picker [value]="currentColor" (onChange)="onColorSelect($event)"></np-color-picker>
 ````
 
 ### Properties
@@ -15,21 +15,12 @@ Angular 8 UI Component
 1.  value : string
     Selected color variable
 
-2.  colorList : string[]
-    array of string, list of colors to available
-
-3.  disabled
+2.  disabled
     true/false - set component disabled
 
-4.  defaultOpen
+3.  defaultOpen
     true/false
     default open or not.    
-
-5.  height
-    string value like '200px', default is '120px'
-
-6.  width
-    string value like '200px', default is '200px'
 ````
 
 ## Methods
