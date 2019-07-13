@@ -7,7 +7,7 @@ Angular 8 color picker UI Component
 ````
 
 ````
-npm i np-color-picker
+npm i np-ui-color-picker
 ````
 
 ````
