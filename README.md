@@ -7,6 +7,10 @@ Angular 8 color picker UI Component
 ````
 
 ````
+npm i np-color-picker
+````
+
+````
 <np-color-picker [value]="currentColor" (onChange)="onColorSelect($event)"></np-color-picker>
 ````
 

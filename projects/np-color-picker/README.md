@@ -2,6 +2,7 @@
 
 ````
 Angular 8 UI Component
+Example given in github repository.
 ````
 
 ````
