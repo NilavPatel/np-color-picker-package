@@ -64,3 +64,18 @@ canvas:hover {
     font-size: 20px;
     font-weight: bold;
 }
+
+.color-block-list {
+    display: inline;
+}
+
+.color-block {
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+    display: inline-block;
+}
+
+.color-block:hover {
+    cursor: pointer;
+}

@@ -1,14 +1,11 @@
 # np-color-picker component
 
-![image login](https://github.com/NilavPatel/np-color-picker-package/blob/master/src/assets/images/image1.PNG)
+````
+Angular 8 UI Component
+Example given in github repository.
+````
 
-````
-Angular 8 color picker UI Component
-````
-
-````
-npm i np-ui-color-picker
-````
+### [Demo](https://stackblitz.com/edit/np-ui-color-picker)
 
 ````
 <np-color-picker [value]="currentColor" (onChange)="onColorSelect($event)"></np-color-picker>
@@ -24,13 +21,17 @@ npm i np-ui-color-picker
 
 3.  defaultOpen
     true/false
-    default open or not.    
+    default open or not. 
 
 4.  iconCss
-    give class to show icon in color picker.  
+    give class to show icon in color picker.   
+
+5.  colors
+    list of pre defined colors, if not pass this variable, default color list will be displayed.
+    data type is array of string. 
 ````
 
-### Methods
+## Methods
 ````
 1.  onChange
     on change event binding

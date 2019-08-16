@@ -5,6 +5,8 @@ Angular 8 UI Component
 Example given in github repository.
 ````
 
+### [Demo](https://stackblitz.com/edit/np-ui-color-picker)
+
 ````
 <np-color-picker [value]="currentColor" (onChange)="onColorSelect($event)"></np-color-picker>
 ````
@@ -22,7 +24,11 @@ Example given in github repository.
     default open or not. 
 
 4.  iconCss
-    give class to show icon in color picker.    
+    give class to show icon in color picker.   
+
+5.  colors
+    list of pre defined colors, if not pass this variable, default color list will be displayed.
+    data type is array of string. 
 ````
 
 ## Methods

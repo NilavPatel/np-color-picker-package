@@ -1,9 +1,7 @@
 <div class="np-component-main">
     <div class="np-input-group" *ngIf="!defaultOpen">
-        <input class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor" class="np-colorpicker-text"
-            maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled">
-        <button type="button" class="np-component-button" (click)="_toggleColorPicker()"
-            [ngStyle]="{'background-color': _value}" [disabled]="disabled">
+        <input class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor" class="np-colorpicker-text" maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled">
+        <button type="button" class="np-component-button" (click)="_toggleColorPicker()" [ngStyle]="{'background-color': _value}" [disabled]="disabled">
             <i class="{{iconCss}}"></i>
         </button>
     </div>
@@ -14,10 +12,11 @@
             <div (click)="_close()" class="np-close-button" *ngIf="!defaultOpen"> x </div>
         </div>
         <div>
-            <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)"
-                (mousemove)="_changeColor($event, false)" (mouseleave)="_onMouseLeaveBlock($event)"></canvas>
-            <canvas class="np-canvas-strip" width="30" height="200" (click)="_clickStrip($event, true)"
-                (mousemove)="_clickStrip($event, false)" (mouseleave)="_onMouseLeaveStrip($event)"></canvas>
+            <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)" (mousemove)="_changeColor($event, false)" (mouseleave)="_onMouseLeaveBlock($event)"></canvas>
+            <canvas class="np-canvas-strip" width="30" height="200" (click)="_clickStrip($event, true)" (mousemove)="_clickStrip($event, false)" (mouseleave)="_onMouseLeaveStrip($event)"></canvas>
+        </div>
+        <div class="color-block-list">
+            <div class="color-block" *ngFor="let color of _colors" [style.background-color]="color" (click)="_onClickColorBlock(color)"></div>
         </div>
     </div>
 </div>

@@ -19,11 +19,33 @@ export class NpColorPickerComponent implements OnInit {
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Input() disabled: boolean;
   @Input() iconCss: string;
+  @Input() colors: string[];
 
+  _colors: string[];
   constructor(private elRef: ElementRef) {
   }
 
   ngOnInit() {
+    if (this.colors != undefined && this.colors.length > 0) {
+      this._colors = this.colors;
+    } else {
+      this._colors = ['#FFFFFF',
+        '#C0C0C0',
+        '#808080',
+        '#000000',
+        '#FF0000',
+        '#800000',
+        '#FFFF00',
+        '#808000',
+        '#00FF00',
+        '#008000',
+        '#00FFFF',
+        '#008080',
+        '#0000FF',
+        '#000080',
+        '#FF00FF',
+        '#800080'];
+    }
   }
 
   ngAfterViewInit() {
@@ -129,7 +151,7 @@ export class NpColorPickerComponent implements OnInit {
       this._close();
     } else {
       this._currentCursorColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
-    }    
+    }
   }
 
   _fullColorHex(r: number, g: number, b: number) {
@@ -153,5 +175,16 @@ export class NpColorPickerComponent implements OnInit {
 
   _onMouseLeaveBlock($event: any) {
     this._currentCursorColor = this._value;
+  }
+
+  _onClickColorBlock(color: string) {
+    this.value = color;
+    this._currentCursorColor = color;
+    this._stripColor = color;
+    this.valueChange.emit(color);
+    this._updateCanvas();
+    if (this.onChange != undefined) {
+      this.onChange.emit(color);
+    }
   }
 }
