@@ -1,4 +1,4 @@
-# np-color-picker component
+# np-ui-color-picker
 
 ````
 Angular 8 UI Component
