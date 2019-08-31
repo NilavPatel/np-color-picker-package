@@ -8,10 +8,12 @@
 }
 
 .np-component-button {
-    margin-left: -25px;
     width: 25px;
-    display: inline-block;
     height: 20px;
+}
+
+.np-input-group {
+    display: inline-flex;
 }
 
 .np-component-div {
@@ -58,11 +60,11 @@ canvas:hover {
 }
 
 .np-close-button {
-    width: 5%;
-    float: right;
     cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 30px;
+    position: absolute;
+    right: 20px;
+    top: 5px;
 }
 
 .color-block-list {

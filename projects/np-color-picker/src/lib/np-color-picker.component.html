@@ -1,7 +1,7 @@
 <div class="np-component-main">
     <div class="np-input-group" *ngIf="!defaultOpen">
         <input class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor" class="np-colorpicker-text" maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled">
-        <button type="button" class="np-component-button" (click)="_toggleColorPicker()" [ngStyle]="{'background-color': _value}" [disabled]="disabled">
+        <button type="button" class="np-component-button" (click)="_toggleColorPicker()" [ngStyle]="{'background-color': _value}" [disabled]="disabled" title="Close">
             <i class="{{iconCss}}"></i>
         </button>
     </div>
