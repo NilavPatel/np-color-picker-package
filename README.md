@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/NilavPatel/np-color-picker-package/master/src/assets/images/logo-large.png" width="300" height="80">
 
 ````
-Angular 8 UI Component
+Angular 8 Color Picker Component
 Example given in github repository. 
 CSS needs to be set as per your branding or design.
 ````
@@ -26,10 +26,7 @@ CSS needs to be set as per your branding or design.
     true/false
     default open or not. 
 
-4.  iconCss : string
-    give class to show icon in color picker. like iconCss="fa fa-eyedropper"
-
-5.  colors : string[]
+4.  colors : string[]
     list of pre defined colors, if not pass this variable, default color list will be displayed.
     data type is array of string. 
 ````

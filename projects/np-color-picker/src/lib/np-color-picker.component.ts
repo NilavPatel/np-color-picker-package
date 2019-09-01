@@ -74,11 +74,27 @@ export class NpColorPickerComponent implements OnInit {
     }
   }
 
+  _open() {
+    if(this.defaultOpen == true){
+      return;
+    }
+    this._isOpen = true;
+    setTimeout(() => {
+      this._updateCanvas();
+    }, 100);
+  }
+
   _close() {
+    if(this.defaultOpen == true){
+      return;
+    }
     this._isOpen = false;
   }
 
   _onInputChange() {
+    if (!this._value.includes('#')) {
+      this._value = "#" + this._value;
+    }
     this.value = this._value;
     this._currentCursorColor = this._value;
     this._stripColor = this._value;
@@ -179,6 +195,7 @@ export class NpColorPickerComponent implements OnInit {
 
   _onClickColorBlock(color: string) {
     this.value = color;
+    this._value = color;
     this._currentCursorColor = color;
     this._stripColor = color;
     this.valueChange.emit(color);
