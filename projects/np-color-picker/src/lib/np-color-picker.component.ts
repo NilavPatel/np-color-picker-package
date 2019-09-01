@@ -164,6 +164,9 @@ export class NpColorPickerComponent implements OnInit {
       this.value = this._value;
       this._currentCursorColor = this._value;
       this.valueChange.emit(this._value);
+      if (this.onChange != undefined) {
+        this.onChange.emit(this._value);
+      }
       this._close();
     } else {
       this._currentCursorColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
