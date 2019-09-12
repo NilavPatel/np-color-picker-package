@@ -8,12 +8,11 @@
 }
 
 .np-component-div {
-    width: 255px;
+    width: 250px;
     background-color: white;
     position: absolute;
     padding: 0px 10px;
     border: 1px solid #4CAF50;
-    height: 240px;
     overflow-x: auto;
     z-index: 9999;
 }
@@ -48,13 +47,6 @@
 
 canvas:hover {
     cursor: crosshair;
-}
-
-.np-close-button {
-    cursor: pointer;
-    position: absolute;
-    padding: 5px;
-    right: 0px;
 }
 
 .color-block {

@@ -1,23 +1,27 @@
 <div class="np-component-main">
     <div class="np-input-group" *ngIf="!defaultOpen">
-        <button type="button" class="np-component-button" (click)="_toggleColorPicker()" [ngStyle]="{'background-color': _value}" [disabled]="disabled" title="Close">
+        <button type="button" class="np-component-button" (click)="_toggleColorPicker()"
+            [ngStyle]="{'background-color': _value}" [disabled]="disabled" title="Close">
             <i class="demo-icon icon-color-picker"></i>
         </button>
-        <input type="text" autocomplete="off" class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor" maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled" (focus)="_open()">
+        <input type="text" autocomplete="off" class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor"
+            maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled"
+            (focus)="_open()">
     </div>
     <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}">
         <div class="np-selected">
             <div class="np-selected-block" [ngStyle]="{'background-color': _currentCursorColor}"></div>
             <div class="np-selected-text">{{_currentCursorColor}}</div>
-            <div (click)="_close()" class="np-close-button" *ngIf="!defaultOpen"><i class="demo-icon icon-cancel"></i>
-            </div>
         </div>
         <div>
-            <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)" (mousemove)="_changeColor($event, false)" (mouseleave)="_onMouseLeaveBlock($event)"></canvas>
-            <canvas class="np-canvas-strip" width="30" height="200" (click)="_clickStrip($event, true)" (mousemove)="_clickStrip($event, false)" (mouseleave)="_onMouseLeaveStrip($event)"></canvas>
+            <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)"
+                (mousemove)="_changeColor($event, false)" (mouseleave)="_onMouseLeaveBlock($event)"></canvas>
+            <canvas class="np-canvas-strip" width="30" height="200" (click)="_clickStrip($event, true)"
+                (mousemove)="_clickStrip($event, false)" (mouseleave)="_onMouseLeaveStrip($event)"></canvas>
         </div>
         <div>
-            <div class="color-block" *ngFor="let color of _colors" [style.background-color]="color" (click)="_onClickColorBlock(color)"></div>
+            <div class="color-block" *ngFor="let color of _colors" [style.background-color]="color"
+                (click)="_onClickColorBlock(color)"></div>
         </div>
     </div>
 </div>

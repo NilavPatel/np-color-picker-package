@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges, HostListener } from '@angular/core';
 import { ElementRef } from '@angular/core';
 
 @Component({
@@ -23,6 +23,13 @@ export class NpColorPickerComponent implements OnInit {
 
   _colors: string[];
   constructor(private elRef: ElementRef) {
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutSide(event: any) {
+    if (!this.elRef.nativeElement.contains(event.target)) {
+      this._close();
+    }
   }
 
   ngOnInit() {
@@ -75,7 +82,7 @@ export class NpColorPickerComponent implements OnInit {
   }
 
   _open() {
-    if(this.defaultOpen == true){
+    if (this.defaultOpen == true) {
       return;
     }
     this._isOpen = true;
@@ -85,7 +92,7 @@ export class NpColorPickerComponent implements OnInit {
   }
 
   _close() {
-    if(this.defaultOpen == true){
+    if (this.defaultOpen == true) {
       return;
     }
     this._isOpen = false;
