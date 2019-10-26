@@ -13,8 +13,9 @@ export class NpColorPickerComponent implements OnInit {
   _stripColor: string = "#0000ff";
   _currentCursorColor: string = "";
   _currentRGB: string = "";
+  _colors: string[];
 
-  @Input() value: string
+  @Input() value: string;
   @Output() valueChange = new EventEmitter();
   @Input() defaultOpen: boolean;
   @Output() onChange: EventEmitter<any> = new EventEmitter();
@@ -22,7 +23,6 @@ export class NpColorPickerComponent implements OnInit {
   @Input() iconCss: string;
   @Input() colors: string[];
 
-  _colors: string[];
   constructor(private elRef: ElementRef) {
   }
 
@@ -74,7 +74,7 @@ export class NpColorPickerComponent implements OnInit {
   }
 
   _toggleColorPicker() {
-    this._isOpen = !this._isOpen
+    this._isOpen = !this._isOpen;
     if (this._isOpen) {
       setTimeout(() => {
         this._updateCanvas();
