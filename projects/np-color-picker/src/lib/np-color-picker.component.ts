@@ -12,6 +12,7 @@ export class NpColorPickerComponent implements OnInit {
   _isOpen: boolean = false;
   _stripColor: string = "#0000ff";
   _currentCursorColor: string = "";
+  _currentRGB: string = "";
 
   @Input() value: string
   @Output() valueChange = new EventEmitter();
@@ -213,5 +214,27 @@ export class NpColorPickerComponent implements OnInit {
     if (this.onChange != undefined) {
       this.onChange.emit(color);
     }
+  }
+
+  _currentHexToRGB() {
+    return this._hexToRgb(this._currentCursorColor);
+  }
+
+  _hexToRgb(hexColor) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
+    var rgb = result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+    return rgb ? rgb.r + ", " + rgb.g + ", " + rgb.b : "";
+  }
+
+  getSelectedHEX() {
+    return this._value;
+  }
+
+  getSelectedRGB() {
+    return this._hexToRgb(this._value);
   }
 }

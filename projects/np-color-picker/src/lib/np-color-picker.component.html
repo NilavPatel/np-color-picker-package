@@ -11,7 +11,10 @@
     <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}">
         <div class="np-selected">
             <div class="np-selected-block" [ngStyle]="{'background-color': _currentCursorColor}"></div>
-            <div class="np-selected-text">{{_currentCursorColor}}</div>
+            <div class="np-selected-text">
+                <div>HEX: {{_currentCursorColor}}</div>
+                <div>RGB: {{_currentHexToRGB()}}</div>
+            </div>
         </div>
         <div>
             <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)"
@@ -20,7 +23,7 @@
                 (mousemove)="_clickStrip($event, false)" (mouseleave)="_onMouseLeaveStrip($event)"></canvas>
         </div>
         <div>
-            <div class="color-block" *ngFor="let color of _colors" [style.background-color]="color"
+            <div class="np-color-block" *ngFor="let color of _colors" [style.background-color]="color"
                 (click)="_onClickColorBlock(color)"></div>
         </div>
     </div>

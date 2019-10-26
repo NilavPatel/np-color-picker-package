@@ -1,11 +1,9 @@
 # np-ui-color-picker
 
-<img src="https://raw.githubusercontent.com/NilavPatel/np-color-picker-package/master/src/assets/images/logo-large.png" width="300" height="80">
+<img src="https://raw.githubusercontent.com/NilavPatel/np-ui-data-grid-package/master/src/assets/images/logo-large.png" width="300" height="80">
 
 ````
 Angular 8 Color Picker Component
-Example given in github repository. 
-CSS needs to be set as per your branding or design.
 ````
 
 ### [Demo](https://stackblitz.com/edit/np-ui-color-picker)
@@ -17,18 +15,25 @@ CSS needs to be set as per your branding or design.
 ### Properties
 ````
 1.  value : string
-    Selected color variable
+    Selected color variable for two way binding.
 
 2.  disabled : boolean
-    true/false - set component disabled
+    set component is disabled or not.
 
 3.  defaultOpen : boolean
-    true/false
-    default open or not. 
+    Set color picker by default open or not. 
 
 4.  colors : string[]
-    list of pre defined colors, if not pass this variable, default color list will be displayed.
-    data type is array of string. 
+    List of pre defined colors, if not passed this variable, default color list will be displayed.
+````
+
+## Apis
+````
+1.  getSelectedHEX
+    get selected color in HEX format
+
+2.  getSelectedRGB
+    get selected color in RGB format
 ````
 
 ## Methods

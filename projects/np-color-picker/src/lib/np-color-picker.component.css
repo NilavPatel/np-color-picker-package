@@ -31,7 +31,7 @@
 }
 
 .np-selected {
-    height: 25px;
+    height: 40px;
     padding: 5px;
     display: flex;
 }
@@ -49,14 +49,14 @@ canvas:hover {
     cursor: crosshair;
 }
 
-.color-block {
+.np-color-block {
     height: 20px;
     width: 20px;
     margin: 2px;
     display: inline-block;
 }
 
-.color-block:hover {
+.np-color-block:hover {
     cursor: pointer;
 }
 
