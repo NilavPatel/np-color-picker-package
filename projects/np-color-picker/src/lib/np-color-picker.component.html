@@ -26,5 +26,8 @@
             <div class="np-color-block" *ngFor="let color of _colors" [style.background-color]="color"
                 (click)="_onClickColorBlock(color)"></div>
         </div>
+        <div *ngIf="isOkButton">
+            <button type="button" class="np-ok-button" (click)="_onOkClick()">Ok</button>
+        </div>
     </div>
 </div>

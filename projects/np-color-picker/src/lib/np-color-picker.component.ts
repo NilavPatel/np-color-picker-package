@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges, HostListener } from '@angular/core';
 import { ElementRef } from '@angular/core';
+import { InvokeFunctionExpr } from '@angular/compiler';
 
 @Component({
   selector: 'np-color-picker',
@@ -22,6 +23,7 @@ export class NpColorPickerComponent implements OnInit {
   @Input() disabled: boolean;
   @Input() iconCss: string;
   @Input() colors: string[];
+  @Input() isOkButton: boolean;
 
   constructor(private elRef: ElementRef) {
   }
@@ -175,7 +177,9 @@ export class NpColorPickerComponent implements OnInit {
       if (this.onChange != undefined) {
         this.onChange.emit(this._value);
       }
-      this._close();
+      if(!this.isOkButton){
+        this._close();
+      }
     } else {
       this._currentCursorColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
     }
@@ -228,6 +232,10 @@ export class NpColorPickerComponent implements OnInit {
       b: parseInt(result[3], 16)
     } : null;
     return rgb ? rgb.r + ", " + rgb.g + ", " + rgb.b : "";
+  }
+
+  _onOkClick(){
+    this._close();
   }
 
   getSelectedHEX() {

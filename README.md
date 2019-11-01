@@ -25,6 +25,10 @@ Angular 8 Color Picker Component
 
 4.  colors : string[]
     List of pre defined colors, if not passed this variable, default color list will be displayed.
+
+5.  isOkButton : boolean
+    If set to true then Ok button will be visible, and color picker will be only closed on click of Ok button. 
+    It's default value is false.
 ````
 
 ## Apis

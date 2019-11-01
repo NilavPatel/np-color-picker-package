@@ -74,6 +74,12 @@ canvas:hover {
     padding: 2px;
 }
 
+.np-ok-button{
+    float: right;
+    padding: 5px;
+    margin: 5px;
+}
+
 
 /*font css start*/
 
