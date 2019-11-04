@@ -34,7 +34,7 @@ npm i np-ui-color-picker
     It's default value is false.
 ````
 
-## Apis
+### Apis
 ````
 1.  getSelectedHEX
     get selected color in HEX format
@@ -43,7 +43,7 @@ npm i np-ui-color-picker
     get selected color in RGB format
 ````
 
-## Methods
+### Methods
 ````
 1.  onChange
     on change event binding
