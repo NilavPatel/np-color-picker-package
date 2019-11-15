@@ -9,6 +9,9 @@ Angular 8 Color Picker Component
 ### [Demo](https://stackblitz.com/edit/np-ui-color-picker)
 
 ````
+npm i np-ui-color-picker
+````
+````
 <np-color-picker [value]="currentColor" (onChange)="onColorSelect($event)"></np-color-picker>
 ````
 
@@ -31,7 +34,7 @@ Angular 8 Color Picker Component
     It's default value is false.
 ````
 
-## Apis
+### Apis
 ````
 1.  getSelectedHEX
     get selected color in HEX format
@@ -40,7 +43,7 @@ Angular 8 Color Picker Component
     get selected color in RGB format
 ````
 
-## Methods
+### Methods
 ````
 1.  onChange
     on change event binding
