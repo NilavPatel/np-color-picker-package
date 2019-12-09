@@ -1,12 +1,12 @@
 <div class="np-component-main">
     <div class="np-input-group" *ngIf="!defaultOpen">
+        <input type="text" autocomplete="off" class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor"
+            maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled"
+            (focus)="_open()">
         <button type="button" class="np-component-button" (click)="_toggleColorPicker()"
             [ngStyle]="{'background-color': _value}" [disabled]="disabled" title="Close">
             <i class="demo-icon icon-color-picker"></i>
         </button>
-        <input type="text" autocomplete="off" class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor"
-            maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled"
-            (focus)="_open()">
     </div>
     <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}">
         <div class="np-selected">

@@ -39,22 +39,8 @@ export class NpColorPickerComponent implements OnInit {
     if (this.colors != undefined && this.colors.length > 0) {
       this._colors = this.colors;
     } else {
-      this._colors = ['#FFFFFF',
-        '#C0C0C0',
-        '#808080',
-        '#000000',
-        '#FF0000',
-        '#800000',
-        '#FFFF00',
-        '#808000',
-        '#00FF00',
-        '#008000',
-        '#00FFFF',
-        '#008080',
-        '#0000FF',
-        '#000080',
-        '#FF00FF',
-        '#800080'];
+      this._colors = ['#000000', '#FFFFFF', '#C0C0C0', '#808080', '#FF0000', '#800000', '#FFFF00', '#808000', '#00FF00',
+        '#008000', '#00FFFF', '#008080', '#0000FF', '#000080', '#FF00FF', '#800080'];
     }
   }
 
@@ -177,7 +163,7 @@ export class NpColorPickerComponent implements OnInit {
       if (this.onChange != undefined) {
         this.onChange.emit(this._value);
       }
-      if(!this.isOkButton){
+      if (!this.isOkButton) {
         this._close();
       }
     } else {
@@ -234,7 +220,7 @@ export class NpColorPickerComponent implements OnInit {
     return rgb ? rgb.r + ", " + rgb.g + ", " + rgb.b : "";
   }
 
-  _onOkClick(){
+  _onOkClick() {
     this._close();
   }
 
