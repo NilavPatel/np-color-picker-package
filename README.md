@@ -8,6 +8,7 @@ Color picker for Angular 8 and 8+
 
 ## [Demo](https://stackblitz.com/edit/np-ui-color-picker)
 
+## NPM
 ````
 npm i np-ui-color-picker
 ````
