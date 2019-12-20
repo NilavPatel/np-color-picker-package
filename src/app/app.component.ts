@@ -9,7 +9,7 @@ export class AppComponent {
 
   title = 'np-ui-color-picker-package';
 
-  currentColor1: string;
+  currentColor1: string ="#5fe64b";
   currentColor2: string;
   currentColor3: string;
   currentColor4: string;
