@@ -7,12 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'np-color-picker-package';
+  title = 'np-ui-color-picker-package';
 
-  currentColor: string;
-  currentColor1: string = "#00FF00";
+  currentColor1: string;
   currentColor2: string;
   currentColor3: string;
+  currentColor4: string;
+  currentColor5: string;
+  currentColor6: string;
 
   existingColors = ['#FFFFFF',
     '#C0C0C0',
@@ -20,10 +22,10 @@ export class AppComponent {
     '#000000'];
 
   onColorSelect(value: string) {
-    alert("selected color is " + value);
+    alert("Selected Color is " + value);
   }
 
   setBlackColor() {
-    this.currentColor2 = "#000000"
+    this.currentColor3 = "#000000"
   }
 }

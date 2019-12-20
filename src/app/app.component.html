@@ -1,24 +1,52 @@
-<form>
-    <div class="row">
-        <div class="col-lg-4">
-            <np-color-picker [(value)]="currentColor"> </np-color-picker>
-        </div>
-        <div>{{currentColor}}</div>
-        <div class="col-lg-4">
-            <np-color-picker [(value)]="currentColor1" [isOkButton]=true> </np-color-picker>
-            {{currentColor1}}
-        </div>
-        <div class="col-lg-4">
-            <np-color-picker [(value)]="currentColor2" (onChange)="onColorSelect($event)">
-            </np-color-picker>
-            {{currentColor2}}
-            <button type="button" (click)="setBlackColor()">Set Black</button>
-        </div>
+<div>
+    <legend>1. Default color picker</legend>
+    <fieldset>
+        <np-ui-color-picker [(value)]="currentColor1"></np-ui-color-picker>
+        <div>Selected Color id: {{currentColor1}}</div>
+    </fieldset>
+</div>
 
-        <div class="col-lg-4">
-            <np-color-picker [(value)]="currentColor3" [defaultOpen]=true [colors]="existingColors">
-            </np-color-picker>
-            {{currentColor3}}
-        </div>
-    </div>
-</form>
+<div>
+    <legend>2. OnChange event for color picker</legend>
+    <fieldset>
+        <np-ui-color-picker [(value)]="currentColor2" (onChange)="onColorSelect($event)"></np-ui-color-picker>
+    </fieldset>
+</div>
+
+
+<div>
+    <legend>3. Set color to color picker</legend>
+    <fieldset>
+        <np-ui-color-picker [(value)]="currentColor3"></np-ui-color-picker>
+        <button type="button" (click)="setBlackColor()">Set Black Color</button>
+    </fieldset>
+</div>
+
+<div>
+    <legend>4. Always open color picker</legend>
+    <fieldset>
+        <np-ui-color-picker [(value)]="currentColor4" [defaultOpen]="true"></np-ui-color-picker>
+    </fieldset>
+</div>
+
+<div>
+    <legend>5. Set existing colors list</legend>
+    <fieldset>
+        <np-ui-color-picker [(value)]="currentColor5" [colors]="existingColors"></np-ui-color-picker>
+    </fieldset>
+</div>
+
+<div>
+    <legend>6. Show OK button to close color picker popup</legend>
+    <fieldset>
+        <np-ui-color-picker [(value)]="currentColor6" [isOkButton]="true"></np-ui-color-picker>
+    </fieldset>
+</div>
+
+<div>
+    <legend>7. Set Disable/Enabled</legend>
+    <fieldset>
+        <np-ui-color-picker [(value)]="currentColor7" [disabled]="isDisabled"></np-ui-color-picker>
+        <button (click)="isDisabled = !isDisabled">Disable/Enabled</button>
+    </fieldset>
+</div>

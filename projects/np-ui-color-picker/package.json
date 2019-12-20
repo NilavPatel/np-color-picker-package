@@ -1,6 +1,6 @@
 {
     "name": "np-ui-color-picker",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "private": false,
     "author": {
         "name": "nilavpatel"
@@ -17,7 +17,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/NilavPatel/np-color-picker-package.git"
+        "url": "https://github.com/NilavPatel/np-ui-color-picker-package.git"
     },
     "peerDependencies": {
         "@angular/animations": "~8.0.0",

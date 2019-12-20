@@ -1,13 +1,12 @@
 import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges, HostListener } from '@angular/core';
 import { ElementRef } from '@angular/core';
-import { InvokeFunctionExpr } from '@angular/compiler';
 
 @Component({
-  selector: 'np-color-picker',
-  templateUrl: 'np-color-picker.component.html',
-  styleUrls: ['np-color-picker.component.css']
+  selector: 'np-ui-color-picker',
+  templateUrl: 'np-ui-color-picker.component.html',
+  styleUrls: ['np-ui-color-picker.component.css']
 })
-export class NpColorPickerComponent implements OnInit {
+export class NpUiColorPickerComponent implements OnInit {
 
   _value: string;
   _isOpen: boolean = false;

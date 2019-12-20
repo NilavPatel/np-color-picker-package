@@ -3,19 +3,21 @@
 <img src="https://raw.githubusercontent.com/NilavPatel/np-ui-data-grid-package/master/src/assets/images/logo-large.png" width="300" height="80">
 
 ````
-Angular 8 Color Picker Component
+Color picker for Angular 8 and 8+
 ````
 
-### [Demo](https://stackblitz.com/edit/np-ui-color-picker)
+## [Demo](https://stackblitz.com/edit/np-ui-color-picker)
 
 ````
 npm i np-ui-color-picker
 ````
+
+## HTML
 ````
-<np-color-picker [value]="currentColor" (onChange)="onColorSelect($event)"></np-color-picker>
+<np-ui-color-picker [value]="currentColor" (onChange)="onColorSelect($event)"></np-ui-color-picker>
 ````
 
-### Properties
+## Properties
 ````
 1.  value : string
     Selected color variable for two way binding.
@@ -34,17 +36,17 @@ npm i np-ui-color-picker
     It's default value is false.
 ````
 
-### Apis
+## Apis
 ````
-1.  getSelectedHEX
+1.  getSelectedHEX()
     get selected color in HEX format
 
-2.  getSelectedRGB
+2.  getSelectedRGB()
     get selected color in RGB format
 ````
 
-### Methods
+## Methods
 ````
-1.  onChange
+1.  onChange()
     on change event binding
 ````

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { NpColorPickerComponent } from './np-color-picker.component';
+import { NpUiColorPickerComponent } from './np-ui-color-picker.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [NpColorPickerComponent],
+  declarations: [NpUiColorPickerComponent],
   imports: [
     CommonModule,
     FormsModule
   ],
-  exports: [NpColorPickerComponent]
+  exports: [NpUiColorPickerComponent]
 })
-export class NpColorPickerModule { }
+export class NpUiColorPickerModule { }

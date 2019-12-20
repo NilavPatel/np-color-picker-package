@@ -20,11 +20,11 @@
       "dom"
     ],
     "paths": {
-      "np-color-picker": [
-        "dist/np-color-picker"
+      "np-ui-color-picker": [
+        "dist/np-ui-color-picker"
       ],
-      "np-color-picker/*": [
-        "dist/np-color-picker/*"
+      "np-ui-color-picker/*": [
+        "dist/np-ui-color-picker/*"
       ]
     }
   }
