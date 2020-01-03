@@ -65,19 +65,42 @@ canvas:hover {
     cursor: pointer;
 }
 
-.np-ok-button {
-    float: right;
-    padding: 5px;
-    margin: 5px;
-}
-
 .np-input-selected {
     height: 18px;
     width: 18px;
 }
 
-.np-icon,
-.np-icon svg {
+.np-button {
+    float: right;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+}
+
+.np-icon-button {
     height: 18px;
     width: 18px;
+    cursor: pointer;
+}
+
+.np-icon {
+    height: 18px;
+    width: 18px;
+}
+
+.np-icon-button-lg {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+.np-icon-lg {
+    height: 24px;
+    width: 24px;
+}
+
+.np-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
