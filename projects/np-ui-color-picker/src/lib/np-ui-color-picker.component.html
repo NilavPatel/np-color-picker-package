@@ -1,30 +1,26 @@
-<div class="np-component-main">
-    <div class="np-input-group" *ngIf="!defaultOpen">
-        <input type="text" autocomplete="off" placeholder="{{placeholder}}"class="np-component-input" [(ngModel)]="_value" name="txtSelectedColor"
-            maxlength="7" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled"
-            (focus)="_open()">
-        <button type="button" class="np-component-button" (click)="_toggleColorPicker()"
-            [ngStyle]="{'background-color': _value}" [disabled]="disabled" title="Close">
-            <i class="demo-icon icon-color-picker"></i>
-        </button>
+<div class="np-component">
+    <div class="np-input" *ngIf="!defaultOpen">
+        <input type="text" class="np-input-text" name="txtSelectedColor" maxlength="7" autocomplete="off" placeholder="{{placeholder}}" [(ngModel)]="_value" (change)="_onInputChange()" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled" (focus)="_open()">
+        <div class="np-input-selected" (click)="_toggleColorPicker()" [ngStyle]="{'background-color': _value}">
+        </div>
+        <a class="np-icon" (click)="_toggleColorPicker()">
+            <svg viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42zM6.92 19L5 17.08l8.06-8.06 1.92 1.92L6.92 19z"/></svg>
+        </a>
     </div>
-    <div class="np-component-div" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-open-component' : defaultOpen}">
-        <div class="np-selected">
-            <div class="np-selected-block" [ngStyle]="{'background-color': _currentCursorColor}"></div>
-            <div class="np-selected-text">
-                <div>HEX: {{_currentCursorColor}}</div>
-                <div>RGB: {{_currentHexToRGB()}}</div>
+    <div class="np-overlay" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-overlay-open' : defaultOpen}">
+        <div class="np-overlay-selected">
+            <div class="np-overlay-selected-block" [ngStyle]="{'background-color': _currentCursorColor}"></div>
+            <div class="np-overlay-selected-text">
+                <div>HEX: <b>{{_currentCursorColor}}</b></div>
+                <div>RGB: <b>{{_currentHexToRGB()}}</b></div>
             </div>
         </div>
         <div>
-            <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)"
-                (mousemove)="_changeColor($event, false)" (mouseleave)="_onMouseLeaveBlock($event)"></canvas>
-            <canvas class="np-canvas-strip" width="30" height="200" (click)="_clickStrip($event, true)"
-                (mousemove)="_clickStrip($event, false)" (mouseleave)="_onMouseLeaveStrip($event)"></canvas>
+            <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)" (mousemove)="_changeColor($event, false)" (mouseleave)="_onMouseLeaveBlock($event)"></canvas>
+            <canvas class="np-canvas-strip" width="30" height="200" (click)="_clickStrip($event, true)" (mousemove)="_clickStrip($event, false)" (mouseleave)="_onMouseLeaveStrip($event)"></canvas>
         </div>
         <div>
-            <div class="np-color-block" *ngFor="let color of _colors" [style.background-color]="color"
-                (click)="_onClickColorBlock(color)"></div>
+            <div class="np-color-block" *ngFor="let color of _colors" [style.background-color]="color" (click)="_onClickColorBlock(color)"></div>
         </div>
         <div *ngIf="isOkButton">
             <button type="button" class="np-ok-button" (click)="_onOkClick()">Ok</button>

@@ -62,6 +62,9 @@ export class NpUiColorPickerComponent implements OnInit {
   }
 
   _toggleColorPicker() {
+    if (this.disabled) {
+      return;
+    }
     this._isOpen = !this._isOpen;
     if (this._isOpen) {
       setTimeout(() => {
