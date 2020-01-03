@@ -1,10 +1,7 @@
 # np-ui-color-picker
+Color picker for Angular 8 and 8+
 
 <img src="https://raw.githubusercontent.com/NilavPatel/np-ui-data-grid-package/master/src/assets/images/logo-large.png" width="300" height="80">
-
-````
-Color picker for Angular 8 and 8+
-````
 
 ## [Demo](https://stackblitz.com/edit/np-ui-color-picker)
 
@@ -35,6 +32,9 @@ npm i np-ui-color-picker
 5.  isOkButton : boolean
     If set to true then Ok button will be visible, and color picker will be only closed on click of Ok button. 
     It's default value is false.
+
+6.  placeholder : string
+    set placeholder for color picker
 ````
 
 ## Apis

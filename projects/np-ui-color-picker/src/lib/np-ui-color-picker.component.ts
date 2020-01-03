@@ -23,6 +23,7 @@ export class NpUiColorPickerComponent implements OnInit {
   @Input() iconCss: string;
   @Input() colors: string[];
   @Input() isOkButton: boolean;
+  @Input() placeholder: string;
 
   constructor(private elRef: ElementRef) {
   }

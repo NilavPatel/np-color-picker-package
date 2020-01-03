@@ -1,18 +1,17 @@
 <div>
-    <legend>1. Default color picker</legend>
     <fieldset>
+        <legend>1. Default color picker</legend>
         <np-ui-color-picker [(value)]="currentColor1"></np-ui-color-picker>
         <div>Selected Color id: {{currentColor1}}</div>
     </fieldset>
 </div>
 
 <div>
-    <legend>2. OnChange event for color picker</legend>
     <fieldset>
+        <legend>2. OnChange event for color picker</legend>
         <np-ui-color-picker [(value)]="currentColor2" (onChange)="onColorSelect($event)"></np-ui-color-picker>
     </fieldset>
 </div>
-
 
 <div>
     <legend>3. Set color to color picker</legend>
@@ -23,30 +22,37 @@
 </div>
 
 <div>
-    <legend>4. Always open color picker</legend>
     <fieldset>
+        <legend>4. Always open color picker</legend>
         <np-ui-color-picker [(value)]="currentColor4" [defaultOpen]="true"></np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
-    <legend>5. Set existing colors list</legend>
     <fieldset>
+        <legend>5. Set existing colors list</legend>
         <np-ui-color-picker [(value)]="currentColor5" [colors]="existingColors"></np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
-    <legend>6. Show OK button to close color picker popup</legend>
     <fieldset>
+        <legend>6. Show OK button to close color picker popup</legend>
         <np-ui-color-picker [(value)]="currentColor6" [isOkButton]="true"></np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
-    <legend>7. Set Disable/Enabled</legend>
     <fieldset>
+        <legend>7. Set Disable/Enabled</legend>
         <np-ui-color-picker [(value)]="currentColor7" [disabled]="isDisabled"></np-ui-color-picker>
         <button (click)="isDisabled = !isDisabled">Disable/Enabled</button>
+    </fieldset>
+</div>
+
+<div>
+    <fieldset>
+        <legend>8. Set Placeholder</legend>
+        <np-ui-color-picker [placeholder]="'Set color for header'"></np-ui-color-picker>
     </fieldset>
 </div>
