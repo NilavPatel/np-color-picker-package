@@ -92,7 +92,7 @@ export class NpUiColorPickerComponent implements OnInit {
   }
 
   _onInputChange() {
-    if (!this._value.includes('#')) {
+    if (this._value && this._value != null && this._value.length > 0 && !this._value.includes('#')) {
       this._value = "#" + this._value;
     }
     this.value = this._value;
