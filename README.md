@@ -33,6 +33,9 @@ npm i np-ui-color-picker
 
 6.  placeholder : string
     set placeholder for color picker
+
+7.  hideColorInput
+    hide color input box, only show seleced color block
 ````
 
 ## Apis
