@@ -14,6 +14,7 @@ export class NpUiColorPickerComponent implements OnInit {
   _currentCursorColor: string = "";
   _currentRGB: string = "";
   _colors: string[];
+  _isStripLoaded: boolean = false;
 
   @Input() value: string;
   @Output() valueChange = new EventEmitter();
@@ -47,6 +48,7 @@ export class NpUiColorPickerComponent implements OnInit {
 
   ngAfterViewInit() {
     if (this.defaultOpen) {
+      this._updateStripCanvas();
       this._updateCanvas();
     }
   }
@@ -69,6 +71,7 @@ export class NpUiColorPickerComponent implements OnInit {
     this._isOpen = !this._isOpen;
     if (this._isOpen) {
       setTimeout(() => {
+        this._updateStripCanvas();
         this._updateCanvas();
       }, 100);
     }
@@ -80,6 +83,7 @@ export class NpUiColorPickerComponent implements OnInit {
     }
     this._isOpen = true;
     setTimeout(() => {
+      this._updateStripCanvas();
       this._updateCanvas();
     }, 100);
   }
@@ -104,6 +108,25 @@ export class NpUiColorPickerComponent implements OnInit {
     }
   }
 
+  _updateStripCanvas() {
+    if (this._isStripLoaded) {
+      return;
+    }
+    var strip = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-strip');
+    var ctx2 = strip.getContext('2d');
+    ctx2.rect(0, 0, 30, 200);
+    var grd1 = ctx2.createLinearGradient(0, 0, 0, 200);
+    grd1.addColorStop(0, 'rgba(255, 0, 0, 1)');
+    grd1.addColorStop(0.17, 'rgba(255, 255, 0, 1)');
+    grd1.addColorStop(0.34, 'rgba(0, 255, 0, 1)');
+    grd1.addColorStop(0.51, 'rgba(0, 255, 255, 1)');
+    grd1.addColorStop(0.68, 'rgba(0, 0, 255, 1)');
+    grd1.addColorStop(0.85, 'rgba(255, 0, 255, 1)');
+    grd1.addColorStop(1, 'rgba(255, 0, 0, 1)');
+    ctx2.fillStyle = grd1;
+    ctx2.fill();
+  }
+
   _updateCanvas() {
     var block = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-block');
     var strip = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-strip');
@@ -124,18 +147,6 @@ export class NpUiColorPickerComponent implements OnInit {
     grdBlack.addColorStop(1, 'rgba(0,0,0,1)');
     ctx1.fillStyle = grdBlack;
     ctx1.fillRect(0, 0, 200, 200);
-
-    ctx2.rect(0, 0, 30, 200);
-    var grd1 = ctx2.createLinearGradient(0, 0, 0, 200);
-    grd1.addColorStop(0, 'rgba(255, 0, 0, 1)');
-    grd1.addColorStop(0.17, 'rgba(255, 255, 0, 1)');
-    grd1.addColorStop(0.34, 'rgba(0, 255, 0, 1)');
-    grd1.addColorStop(0.51, 'rgba(0, 255, 255, 1)');
-    grd1.addColorStop(0.68, 'rgba(0, 0, 255, 1)');
-    grd1.addColorStop(0.85, 'rgba(255, 0, 255, 1)');
-    grd1.addColorStop(1, 'rgba(255, 0, 0, 1)');
-    ctx2.fillStyle = grd1;
-    ctx2.fill();
   }
 
   _clickStrip(e: any, isUpdateColor: boolean) {
