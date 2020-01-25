@@ -36,6 +36,13 @@ npm i np-ui-color-picker
 
 7.  hideColorInput
     hide color input box, only show seleced color block
+
+8.  required : boolean
+    default value is false.
+    add required attribute to input textbox.
+
+9. name : string
+    add name attribute to input textbox.
 ````
 
 ## Apis
