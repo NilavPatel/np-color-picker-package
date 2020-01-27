@@ -16,9 +16,9 @@ export class NpUiColorPickerComponent implements OnInit {
   _colors: string[];
   _isStripLoaded: boolean = false;
 
-  @Input() value: string;
-  @Output() valueChange = new EventEmitter();
+  @Input() value: string;  
   @Input() defaultOpen: boolean;
+  @Output() valueChange: EventEmitter<any> = new EventEmitter();
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Input() disabled: boolean;
   @Input() iconCss: string;
@@ -60,7 +60,7 @@ export class NpUiColorPickerComponent implements OnInit {
       this._value = changes.value.currentValue;
       this._currentCursorColor = changes.value.currentValue;
       this._stripColor = changes.value.currentValue;
-      if (this.onChange != undefined && !changes.value.firstChange) {
+      if (!changes.value.firstChange) {
         this.onChange.emit(this._value);
       }
     }
@@ -105,9 +105,7 @@ export class NpUiColorPickerComponent implements OnInit {
     this._currentCursorColor = this._value;
     this._stripColor = this._value;
     this.valueChange.emit(this._value);
-    if (this.onChange != undefined) {
-      this.onChange.emit(this._value);
-    }
+    this.onChange.emit(this._value);
   }
 
   _updateStripCanvas() {
@@ -177,9 +175,7 @@ export class NpUiColorPickerComponent implements OnInit {
       this.value = this._value;
       this._currentCursorColor = this._value;
       this.valueChange.emit(this._value);
-      if (this.onChange != undefined) {
-        this.onChange.emit(this._value);
-      }
+      this.onChange.emit(this._value);
       if (!this.isOkButton) {
         this._close();
       }
@@ -218,9 +214,7 @@ export class NpUiColorPickerComponent implements OnInit {
     this._stripColor = color;
     this.valueChange.emit(color);
     this._updateCanvas();
-    if (this.onChange != undefined) {
-      this.onChange.emit(color);
-    }
+    this.onChange.emit(color);
   }
 
   _currentHexToRGB() {
