@@ -1,69 +1,57 @@
 # np-ui-color-picker
-Color picker for Angular 8 and 8+
+Color picker custom component for Angular 8 and 8+, Created using only Angular.
 
-## [Demo](https://stackblitz.com/edit/np-ui-color-picker)
+### Check demo [Here](https://stackblitz.com/edit/np-ui-color-picker)
 
 ## NPM
-````
-npm i np-ui-color-picker
-````
+``$ npm install np-ui-color-picker``
 
 ## HTML
-````
-<np-ui-color-picker [value]="currentColor" (onChange)="onColorSelect($event)"></np-ui-color-picker>
+````html
+<np-ui-color-picker 
+    [(value)]="currentColor"
+    [isOkButton] = "true"
+    (onChange)="onColorSelect($event)">
+</np-ui-color-picker>
 ````
 
 ## Properties
-````
-1.  value : string
-    Selected color variable for two way binding.
-
-2.  disabled : boolean
-    set component is disabled or not.
-
-3.  defaultOpen : boolean
+1.  `value` : string
+    Selected color variable for two way data binding.
+2.  `disabled` : boolean
+    Set component is disabled or not.
+3.  `defaultOpen` : boolean
     Set color picker by default open or not. 
-
-4.  colors : string[]
+4.  `colors` : string[]
     List of pre defined colors, if not passed this variable, default color list will be displayed.
-
-5.  isOkButton : boolean
-    If set to true then Ok button will be visible, and color picker will be only closed on click of Ok button. 
-    It's default value is false.
-
-6.  placeholder : string
-    set placeholder for color picker
-
-7.  hideColorInput
-    hide color input box, only show seleced color block
-
-8.  required : boolean
-    default value is false.
-    add required attribute to input textbox.
-
-9. name : string
-    add name attribute to input textbox.
-````
-
+5.  `isOkButton` : boolean
+    If set to true then Ok button will be visible, and color picker will be only closed on click of Ok button. It's default value is false.
+6.  `placeholder` : string
+    Set placeholder for color picker.
+7.  `hideColorInput` : boolean
+    Hide color input box, only show seleced color block.
+8.  `required` : boolean
+    Default value is false. add required attribute to input textbox.
+9. `name` : string
+    Add name attribute to input textbox.
 ## Apis
-````
-1.  getSelectedHEX()
-    get selected color in HEX format
-
-2.  getSelectedRGB()
-    get selected color in RGB format
-````
+1.  `getSelectedHEX()`
+    Get selected color in HEX format.
+2.  `getSelectedRGB()`
+    Get selected color in RGB format.
 
 ## Methods
-````
-1.  onChange()
-    on change event binding
-````
+1.  `onChange()`
+    On change event binding for component.
 
-## All np-ui packages for Angular
+## Other np-ui components for Angular
 1. [Data grid](https://www.npmjs.com/package/np-ui-data-grid)
 2. [Date picker](https://www.npmjs.com/package/np-ui-date-picker)
 3. [Time picker](https://www.npmjs.com/package/np-ui-time-picker)
 4. [Color picker](https://www.npmjs.com/package/np-ui-color-picker)
 
-<img src="https://raw.githubusercontent.com/NilavPatel/nilavpatel.github.io/master/images/logo-large.png" width="300" height="80">
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Contributors
+![](https://raw.githubusercontent.com/NilavPatel/nilavpatel.github.io/master/images/logo-large.png)
