@@ -3,55 +3,71 @@
     display: inline-block;
 }
 
-.np-component .ng-invalid {
-    border: 1px solid red;
-}
-
-.np-input {
+.np-input-group {
     display: inline-flex;
-    border: 1px solid lightgray;
+    border: 1px solid black;
     padding: 2px;
 }
 
-.np-input-text {
-    border: none;
-    padding: 0px 2px;
+.np-input {
+    border: 1px solid transparent;
+}
+
+.np-input-group-append {
+    display: flex;
+    align-items: center;
+}
+
+.ng-invalid {
+    border: 1px solid red;
 }
 
 .np-overlay {
-    width: 235px;
     background-color: white;
     position: absolute;
-    padding: 10px;
-    border: 1px solid lightgray;
-    overflow-x: auto;
-    z-index: 9999;
-}
-
-.np-overlay-selected {
-    padding-bottom: 5px;
-    display: flex;
-}
-
-.np-overlay-selected-text {
     padding: 5px;
-}
-
-.np-overlay-selected-block {
-    width: 20%;
+    border: 1px solid black;
+    z-index: 9999;
+    width: 240px;
 }
 
 .np-overlay-open {
     position: relative;
     z-index: auto;
+    width: 240px;
 }
 
-.np-canvas-block {
-    padding-right: 5px;
+.np-icon {
+    height: 18px;
+    width: 18px;
+    margin: auto;
 }
 
-canvas:hover {
-    cursor: crosshair;
+.np-icon-lg {
+    height: 24px;
+    width: 24px;
+}
+
+.np-button-group {
+    display: flex;
+}
+
+.np-button {
+    padding: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.np-button-group .np-button {
+    margin: auto;
+}
+
+.np-button:hover {
+    background-color: lightgray;
+}
+
+.np-input-selected {
+    width: 20px;
 }
 
 .np-color-block {
@@ -65,42 +81,39 @@ canvas:hover {
     cursor: pointer;
 }
 
-.np-input-selected {
-    height: 18px;
-    width: 18px;
+.np-overlay-selected {
+    display: flex;
 }
 
-.np-button {
+.np-overlay-selected-block {
+    height: 35px;
+    width: 35px;
+    margin: 0px 5px 5px 0px;
+}
+
+canvas:hover {
+    cursor: crosshair;
+}
+
+.align-right {
     float: right;
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid lightgray;
+}
+
+.np-canvas-strip {
+    padding-left: 5px;
+}
+
+.np-color-block {
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+    display: inline-block;
+}
+
+.np-color-block:hover {
     cursor: pointer;
 }
 
-.np-icon-button {
-    height: 18px;
-    width: 18px;
+.np-button-icon {
     cursor: pointer;
-}
-
-.np-icon {
-    height: 18px;
-    width: 18px;
-}
-
-.np-icon-button-lg {
-    height: 24px;
-    width: 24px;
-    cursor: pointer;
-}
-
-.np-icon-lg {
-    height: 24px;
-    width: 24px;
-}
-
-.np-button-disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
 }
