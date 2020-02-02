@@ -19,12 +19,13 @@
                     d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                 <path d="M0 0h24v24H0z" fill="none" /></svg>
         </a>
-        <div class="np-overlay-selected">
-            <div class="np-overlay-selected-block" [ngStyle]="{'background-color': _currentCursorColor}"></div>
-            <div class="np-overlay-selected-text">
-                <div>HEX: <b>{{_currentCursorColor}}</b></div>
+        <div class="np-selected-block">
+            <div class="np-selected-div" [ngStyle]="{'background-color': _value}"></div>
+            <div class="np-selected-text">
+                <div>HEX: <b>{{_value}}</b></div>
                 <div>RGB: <b>{{_currentHexToRGB()}}</b></div>
             </div>
+
         </div>
         <div class="np-canvases">
             <canvas class="np-canvas-block" width="200" height="200" (click)="_changeColor($event, true)" (mousemove)="_changeColor($event, false)" (mouseleave)="_onMouseLeaveBlock($event)"></canvas>
@@ -44,3 +45,4 @@
         </div>
     </div>
 </div>
+<div class="np-cursor-div" *ngIf="_isShowCursorDiv" [ngStyle]="{'background-color': _currentCursorColor, 'position': 'absolute', 'left': _x , 'top': _y}"></div>

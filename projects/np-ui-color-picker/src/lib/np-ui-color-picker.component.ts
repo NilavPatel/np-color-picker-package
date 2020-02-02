@@ -12,9 +12,11 @@ export class NpUiColorPickerComponent implements OnInit {
   _isOpen: boolean = false;
   _stripColor: string = "#0000ff";
   _currentCursorColor: string = "";
-  _currentRGB: string = "";
   _colors: string[];
   _isStripLoaded: boolean = false;
+  _x: string = '0px';
+  _y: string = '0px';
+  _isShowCursorDiv: boolean = false;
 
   @Input() value: string;
   @Input() defaultOpen: boolean;
@@ -43,8 +45,8 @@ export class NpUiColorPickerComponent implements OnInit {
     if (this.colors != undefined && this.colors.length > 0) {
       this._colors = this.colors;
     } else {
-      this._colors = ['#000000', '#FFFFFF', '#C0C0C0', '#808080', '#FF0000', '#800000', '#FFFF00', '#808000', '#00FF00',
-        '#008000', '#00FFFF', '#008080', '#0000FF', '#000080', '#FF00FF', '#800080'];
+      this._colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688',
+        '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b', '#ccccccff'];
     }
   }
 
@@ -94,6 +96,7 @@ export class NpUiColorPickerComponent implements OnInit {
     if (this.defaultOpen == true) {
       return;
     }
+    this._isShowCursorDiv = false;
     this._isOpen = false;
   }
 
@@ -150,6 +153,9 @@ export class NpUiColorPickerComponent implements OnInit {
   }
 
   _clickStrip(e: any, isUpdateColor: boolean) {
+    this._isShowCursorDiv = true;
+    this._x = (e.pageX + 5) + 'px';
+    this._y = (e.pageY + 5) + 'px';
     var strip = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-strip');
     var ctx2 = strip.getContext('2d');
     var x = e.offsetX;
@@ -165,6 +171,9 @@ export class NpUiColorPickerComponent implements OnInit {
   }
 
   _changeColor(e: any, isUpdateColor: boolean) {
+    this._isShowCursorDiv = true;
+    this._x = (e.pageX + 5) + 'px';
+    this._y = (e.pageY + 5) + 'px';
     var block = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-block');
     var ctx1 = block.getContext('2d');
     var x = e.offsetX;
@@ -176,7 +185,7 @@ export class NpUiColorPickerComponent implements OnInit {
       this._currentCursorColor = this._value;
       this.valueChange.emit(this._value);
       this.onChange.emit(this._value);
-      if (!this.isOkButton) {
+      if (!this.isOkButton) {        
         this._close();
       }
     } else {
@@ -200,14 +209,16 @@ export class NpUiColorPickerComponent implements OnInit {
   };
 
   _onMouseLeaveStrip($event: any) {
+    this._isShowCursorDiv = false;
     this._currentCursorColor = this._value;
   }
 
   _onMouseLeaveBlock($event: any) {
+    this._isShowCursorDiv = false;
     this._currentCursorColor = this._value;
   }
 
-  _onClickColorBlock(color: string) {
+  _onClickColorBlock(color: string) {    
     if (color == undefined || color == null) {
       this.value = null;
       this._value = null;
@@ -226,7 +237,7 @@ export class NpUiColorPickerComponent implements OnInit {
   }
 
   _currentHexToRGB() {
-    return this._hexToRgb(this._currentCursorColor);
+    return this._hexToRgb(this.value);
   }
 
   _hexToRgb(hexColor) {

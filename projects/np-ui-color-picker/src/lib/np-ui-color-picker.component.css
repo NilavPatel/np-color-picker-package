@@ -81,14 +81,24 @@
     cursor: pointer;
 }
 
-.np-overlay-selected {
+.np-selected-block {
     display: flex;
 }
 
-.np-overlay-selected-block {
+.np-selected-div {
     height: 35px;
     width: 35px;
     margin: 0px 5px 5px 0px;
+}
+
+.np-cursor-div {
+    height: 35px;
+    width: 35px;
+    z-index: 99999;
+}
+
+.np-selected-text {
+    width: 135px;
 }
 
 canvas:hover {
