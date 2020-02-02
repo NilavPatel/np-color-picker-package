@@ -16,7 +16,7 @@ export class NpUiColorPickerComponent implements OnInit {
   _colors: string[];
   _isStripLoaded: boolean = false;
 
-  @Input() value: string;  
+  @Input() value: string;
   @Input() defaultOpen: boolean;
   @Output() valueChange: EventEmitter<any> = new EventEmitter();
   @Output() onChange: EventEmitter<any> = new EventEmitter();
@@ -208,6 +208,14 @@ export class NpUiColorPickerComponent implements OnInit {
   }
 
   _onClickColorBlock(color: string) {
+    if (color == undefined || color == null) {
+      this.value = null;
+      this._value = null;
+      this._currentCursorColor = null;
+      this.valueChange.emit(null);
+      this.onChange.emit(null);
+      return;
+    }
     this.value = color;
     this._value = color;
     this._currentCursorColor = color;
