@@ -1,6 +1,6 @@
 {
     "name": "np-ui-color-picker",
-    "version": "1.4.7",
+    "version": "1.5.0",
     "private": false,
     "author": {
         "name": "nilavpatel"
@@ -9,6 +9,7 @@
     "keywords": [
         "angular",
         "angular 8",
+        "angular 9",
         "colorpicker",
         "color-chooser",
         "typescript",

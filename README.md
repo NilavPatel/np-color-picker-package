@@ -1,7 +1,7 @@
 # np-ui-color-picker
 Color picker custom component for Angular 8 and 8+, Created using only Angular.
 
-### Check demo [Here](https://stackblitz.com/edit/np-ui-color-picker)
+## Check demo [Here](https://stackblitz.com/edit/np-ui-color-picker)
 
 ## NPM
 ``$ npm install np-ui-color-picker``
