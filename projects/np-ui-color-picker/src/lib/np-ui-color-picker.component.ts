@@ -1,10 +1,12 @@
-import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges, HostListener } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges, HostListener, ViewEncapsulation, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'np-ui-color-picker',
   templateUrl: 'np-ui-color-picker.component.html',
-  styleUrls: ['np-ui-color-picker.component.css']
+  styleUrls: ['np-ui-color-picker.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class NpUiColorPickerComponent implements OnInit {
 
@@ -30,6 +32,8 @@ export class NpUiColorPickerComponent implements OnInit {
   @Input() hideColorInput: boolean;
   @Input() required: boolean = false;
   @Input() name: string = "";
+
+  @ViewChild('colorpickerinput') input: ElementRef;
 
   constructor(private elRef: ElementRef) {
   }
@@ -74,10 +78,11 @@ export class NpUiColorPickerComponent implements OnInit {
     }
     this._isOpen = !this._isOpen;
     if (this._isOpen) {
+      this.input.nativeElement.focus();
       setTimeout(() => {
         this._updateStripCanvas();
         this._updateCanvas();
-      }, 100);
+      }, 10);
     }
   }
 
@@ -85,11 +90,12 @@ export class NpUiColorPickerComponent implements OnInit {
     if (this.defaultOpen == true) {
       return;
     }
+    this.input.nativeElement.focus();
     this._isOpen = true;
     setTimeout(() => {
       this._updateStripCanvas();
       this._updateCanvas();
-    }, 100);
+    }, 10);
   }
 
   _close() {
@@ -185,7 +191,7 @@ export class NpUiColorPickerComponent implements OnInit {
       this._currentCursorColor = this._value;
       this.valueChange.emit(this._value);
       this.onChange.emit(this._value);
-      if (!this.isOkButton) {        
+      if (!this.isOkButton) {
         this._close();
       }
     } else {
@@ -218,7 +224,7 @@ export class NpUiColorPickerComponent implements OnInit {
     this._currentCursorColor = this._value;
   }
 
-  _onClickColorBlock(color: string) {    
+  _onClickColorBlock(color: string) {
     if (color == undefined || color == null) {
       this.value = null;
       this._value = null;

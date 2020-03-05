@@ -9,12 +9,15 @@ export class AppComponent {
 
   title = 'np-ui-color-picker-package';
 
-  currentColor1: string ="#5fe64b";
+  currentColor1: string = "#5fe64b";
   currentColor2: string;
   currentColor3: string;
   currentColor4: string;
   currentColor5: string;
   currentColor6: string;
+  currentColor7: string;
+
+  isDisabled: boolean = true;
 
   existingColors = ['#FFFFFF',
     '#C0C0C0',
