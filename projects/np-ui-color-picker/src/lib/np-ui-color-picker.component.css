@@ -26,6 +26,7 @@
     position: relative;
     vertical-align: middle;
     cursor: pointer;
+    user-select: none;
 }
 
 .np-overlay {
@@ -44,6 +45,7 @@
 
 .np-button-icon {
     cursor: pointer;
+    user-select: none;
 }
 
 .np-overlay table td {
@@ -58,6 +60,7 @@
     cursor: pointer;
     min-width: 50px;
     text-align: center;
+    user-select: none;
 }
 
 .np-overlay-colorpicker-open {
