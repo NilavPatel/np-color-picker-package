@@ -1,8 +1,8 @@
 <div class="np-component">
     <div class="np-input-group" *ngIf="!defaultOpen">
-        <input type="text" #colorpickerinput class="np-colorpicker-input" name="txtSelectedColor" maxlength="7" autocomplete="off"
-            pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled" [placeholder]="placeholder" [name]="name"
-            [required]="required" [(ngModel)]="_value" (change)="_onInputChange()" (focus)="_open()"
+        <input type="text" #colorpickerinput class="np-colorpicker-input" name="txtSelectedColor" maxlength="7"
+            autocomplete="off" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled" [placeholder]="placeholder"
+            [name]="name" [required]="required" [(ngModel)]="_value" (change)="_onInputChange()" (focus)="_open()"
             [ngClass]="{'np-hide-input':hideColorInput}">
         <div class="np-colorpicker-input-selected" (click)="_toggleColorPicker()"
             [ngStyle]="{'background-color': _value}">
@@ -16,11 +16,13 @@
         </div>
     </div>
     <div class="np-overlay" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-overlay-colorpicker-open' : defaultOpen}">
-        <div class="np-button-icon np-icon-close" *ngIf="!defaultOpen" (click)="_close()">
-            <svg class="np-icon" viewBox="0 0 24 24">
-                <path fill="currentcolor"
-                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                <path d="M0 0h24v24H0z" fill="none" /></svg>
+        <div class="np-icon-close" *ngIf="!defaultOpen">
+            <a (click)="_close()">
+                <svg class="np-icon" viewBox="0 0 24 24">
+                    <path fill="currentcolor"
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                    <path d="M0 0h24v24H0z" fill="none" /></svg>
+            </a>
         </div>
         <div class="np-selected-block">
             <div class="np-selected-div" [ngStyle]="{'background-color': _value}"></div>
