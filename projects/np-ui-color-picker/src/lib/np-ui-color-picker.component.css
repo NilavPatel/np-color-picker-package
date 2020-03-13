@@ -7,31 +7,28 @@
 .np-icon {
     height: 16px;
     width: 16px;
-    padding: 1px;
 }
 
 .np-icon-lg {
     height: 24px;
     width: 24px;
-    padding: 1px;
+}
+
+.np-input-group {
+    display: flex;
 }
 
 .np-colorpicker-input {
-    padding-right: 40px;
+    width: 100%;
 }
 
 .np-input-colorpicker-append {
-    display: inline-block;
-    right: 36px;
-    position: relative;
-    vertical-align: middle;
     cursor: pointer;
     user-select: none;
 }
 
 .np-overlay {
     position: absolute;
-    background-color: white;
     z-index: 1;
     border: 1px solid black;
     padding: 5px;
@@ -43,7 +40,11 @@
     right: 5px;
 }
 
-.np-button-icon {
+.np-icon-button {
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     user-select: none;
 }
@@ -52,15 +53,35 @@
     text-align: center;
 }
 
-.np-button {
-    border: 1px solid black;
-    padding: 2px;
-    margin-left: 5px;
-    display: inline-block;
+.np-icon-close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
     cursor: pointer;
-    min-width: 50px;
-    text-align: center;
     user-select: none;
+}
+
+.np-button-group {
+    padding: 5px;
+    text-align: end;
+}
+
+.np-button-group .np-button {
+    margin-left: 5px;
+    display: inline-flex;
+}
+
+.np-button {
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    display: block;
+    border: 1px solid black;
+}
+
+.np-button:hover {
+    background-color: lightblue;
 }
 
 .np-overlay-colorpicker-open {
@@ -74,12 +95,7 @@
 }
 
 .np-colorpicker-input-selected {
-    height: 16px;
     width: 16px;
-    display: inline-block;
-    right: 38px;
-    position: relative;
-    vertical-align: middle;
     cursor: pointer;
 }
 
@@ -92,6 +108,7 @@
     width: 20px;
     display: inline-block;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .np-color-block {
@@ -99,6 +116,7 @@
     width: 20px;
     display: inline-block;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .np-color-block-list {
@@ -116,5 +134,29 @@
 }
 
 .np-hide-input {
-    width: 0px;
+    display: none;
+}
+
+.np-ui-background {
+    background-color: aliceblue;
+}
+
+.np-selected-block {
+    display: flex;
+}
+
+.np-selected-text {
+    padding-bottom: 5px;
+}
+
+.np-selected-text span {
+    font-style: italic;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.np-selected-div {
+    height: 35px;
+    width: 35px;
+    margin-right: 5px;
 }

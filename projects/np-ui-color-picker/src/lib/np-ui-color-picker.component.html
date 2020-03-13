@@ -1,32 +1,33 @@
 <div class="np-component">
     <div class="np-input-group" *ngIf="!defaultOpen">
-        <input type="text" #colorpickerinput class="np-colorpicker-input" name="txtSelectedColor" maxlength="7" autocomplete="off"
-            pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled" [placeholder]="placeholder" [name]="name"
-            [required]="required" [(ngModel)]="_value" (change)="_onInputChange()" (focus)="_open()"
+        <input type="text" #colorpickerinput class="np-colorpicker-input" name="txtSelectedColor" maxlength="7"
+            autocomplete="off" pattern="(#[a-zA-Z0-9]{3,6})" [disabled]="disabled" [placeholder]="placeholder"
+            [name]="name" [required]="required" [(ngModel)]="_value" (change)="_onInputChange()" (focus)="_open()"
             [ngClass]="{'np-hide-input':hideColorInput}">
         <div class="np-colorpicker-input-selected" (click)="_toggleColorPicker()"
             [ngStyle]="{'background-color': _value}">
         </div>
-        <div class="np-input-colorpicker-append" (click)="_toggleColorPicker()">
+        <a class="np-input-colorpicker-append" (click)="_toggleColorPicker()">
             <svg class="np-icon" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
                 <path fill="currentcolor"
                     d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42zM6.92 19L5 17.08l8.06-8.06 1.92 1.92L6.92 19z" />
             </svg>
-        </div>
+        </a>
     </div>
-    <div class="np-overlay" *ngIf="_isOpen || defaultOpen" [ngClass]="{'np-overlay-colorpicker-open' : defaultOpen}">
-        <div class="np-button-icon np-icon-close" *ngIf="!defaultOpen" (click)="_close()">
+    <div class="np-overlay np-ui-background" *ngIf="_isOpen || defaultOpen"
+        [ngClass]="{'np-overlay-colorpicker-open' : defaultOpen}">
+        <a class="np-icon-close" *ngIf="!defaultOpen" (click)="_close()">
             <svg class="np-icon" viewBox="0 0 24 24">
                 <path fill="currentcolor"
                     d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                 <path d="M0 0h24v24H0z" fill="none" /></svg>
-        </div>
+        </a>
         <div class="np-selected-block">
             <div class="np-selected-div" [ngStyle]="{'background-color': _value}"></div>
             <div class="np-selected-text">
-                <div>HEX: <b>{{_value}}</b></div>
-                <div>RGB: <b>{{_currentHexToRGB()}}</b></div>
+                <div><span>HEX:</span> {{_value}}</div>
+                <div><span>RGB:</span> {{_currentHexToRGB()}}</div>
             </div>
 
         </div>

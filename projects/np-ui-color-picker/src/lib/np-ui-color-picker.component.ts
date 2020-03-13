@@ -27,7 +27,7 @@ export class NpUiColorPickerComponent implements OnInit {
   @Input() disabled: boolean;
   @Input() iconCss: string;
   @Input() colors: string[];
-  @Input() isOkButton: boolean;
+  @Input() isOkButton: boolean = true;
   @Input() placeholder: string = "";
   @Input() hideColorInput: boolean;
   @Input() required: boolean = false;
@@ -36,6 +36,8 @@ export class NpUiColorPickerComponent implements OnInit {
   @ViewChild('colorpickerinput') input: ElementRef;
 
   constructor(private elRef: ElementRef) {
+    this._colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688',
+      '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b', '#ccccccff'];
   }
 
   @HostListener('document:click', ['$event'])
@@ -46,12 +48,6 @@ export class NpUiColorPickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.colors != undefined && this.colors.length > 0) {
-      this._colors = this.colors;
-    } else {
-      this._colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688',
-        '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b', '#ccccccff'];
-    }
   }
 
   ngAfterViewInit() {
@@ -66,9 +62,9 @@ export class NpUiColorPickerComponent implements OnInit {
       this._value = changes.value.currentValue;
       this._currentCursorColor = changes.value.currentValue;
       this._stripColor = changes.value.currentValue;
-      if (!changes.value.firstChange) {
-        this.onChange.emit(this._value);
-      }
+    }
+    if (changes.colors) {
+      this._colors = this.colors;
     }
   }
 
