@@ -37,7 +37,10 @@
 
 .np-icon-close {
     position: absolute;
-    right: 5px;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .np-icon-button {
