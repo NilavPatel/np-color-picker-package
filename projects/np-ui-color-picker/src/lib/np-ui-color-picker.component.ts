@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, Input, ViewChild, ElementRef, HostListener, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, Input, ViewChild, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 })
 export class NpUiColorPickerComponent implements ControlValueAccessor {
 
-  private _innerValue: any = '';
+  _innerValue: any = '';
   _isDisabled: boolean = false;
   private onChangeCallback: (_: any) => void;
   private onTouchedCallback: () => void;
@@ -60,7 +60,7 @@ export class NpUiColorPickerComponent implements ControlValueAccessor {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: any) {
     if (changes.colors) {
       this._colors = this.colors;
     }
