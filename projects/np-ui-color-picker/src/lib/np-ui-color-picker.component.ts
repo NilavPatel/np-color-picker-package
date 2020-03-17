@@ -21,8 +21,7 @@ export class NpUiColorPickerComponent implements ControlValueAccessor {
   _isDisabled: boolean = false;
   private onChangeCallback: (_: any) => void;
   private onTouchedCallback: () => void;
-
-  @Input() required: boolean;
+  
   @Input() colors: string[];
   @Input() placeholder: string = "";
   @Input() hideColorInput: boolean;
