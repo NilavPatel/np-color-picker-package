@@ -35,14 +35,6 @@
     min-width: 200px;
 }
 
-.np-icon-close {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    cursor: pointer;
-    user-select: none;
-}
-
 .np-icon-button {
     padding: 2px;
     display: flex;
@@ -54,14 +46,6 @@
 
 .np-overlay table td {
     text-align: center;
-}
-
-.np-icon-close {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    cursor: pointer;
-    user-select: none;
 }
 
 .np-button-group {

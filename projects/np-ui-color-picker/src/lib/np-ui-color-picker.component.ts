@@ -27,7 +27,6 @@ export class NpUiColorPickerComponent implements OnInit {
   @Input() disabled: boolean;
   @Input() iconCss: string;
   @Input() colors: string[];
-  @Input() isOkButton: boolean = true;
   @Input() placeholder: string = "";
   @Input() hideColorInput: boolean;
   @Input() required: boolean = false;
@@ -187,9 +186,6 @@ export class NpUiColorPickerComponent implements OnInit {
       this._currentCursorColor = this._value;
       this.valueChange.emit(this._value);
       this.onChange.emit(this._value);
-      if (!this.isOkButton) {
-        this._close();
-      }
     } else {
       this._currentCursorColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
     }
@@ -262,5 +258,12 @@ export class NpUiColorPickerComponent implements OnInit {
 
   getSelectedRGB() {
     return this._hexToRgb(this._value);
+  }
+
+  _clear() {
+    this._value = null;
+    this.value = null;
+    this.valueChange.emit(null);
+    this._isOpen = false;
   }
 }

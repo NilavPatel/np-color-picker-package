@@ -24,16 +24,13 @@ Color picker custom component for Angular 9 and 9+, Created using only Angular.
     Set color picker by default open or not.  
 4.  `colors` : string[]  
     List of pre defined colors, if not passed this variable, default color list will be displayed.  
-5.  `isOkButton` : boolean  
-    If set to true then Ok button will be visible, and color picker will be only closed on click of Ok button.  
-    It's default value is true.  
-6.  `placeholder` : string  
+5.  `placeholder` : string  
     Set placeholder for color picker.  
-7.  `hideColorInput` : boolean  
+6.  `hideColorInput` : boolean  
     Hide color input box, only show seleced color block.  
-8.  `required` : boolean  
+7.  `required` : boolean  
     Default value is false. add required attribute to input textbox.  
-9. `name` : string  
+8. `name` : string  
     Add name attribute to input textbox.  
 
 ## Apis  

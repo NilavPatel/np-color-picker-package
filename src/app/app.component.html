@@ -42,14 +42,7 @@
 
 <div>
     <fieldset>
-        <legend>6. Show OK button to close color picker popup</legend>
-        <np-ui-color-picker [(value)]="currentColor6" [isOkButton]="true"></np-ui-color-picker>
-    </fieldset>
-</div>
-
-<div>
-    <fieldset>
-        <legend>7. Set Disable/Enabled</legend>
+        <legend>6. Set Disable/Enabled</legend>
         <np-ui-color-picker [(value)]="currentColor7" [disabled]="isDisabled"></np-ui-color-picker>
         <button (click)="isDisabled = !isDisabled">Disable/Enabled</button>
     </fieldset>
@@ -57,21 +50,22 @@
 
 <div>
     <fieldset>
-        <legend>8. Set Placeholder</legend>
+        <legend>7. Set Placeholder</legend>
         <np-ui-color-picker [placeholder]="'Set color for header'"></np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>9. hide color input, show only selected color block</legend>
+        <legend>8. hide color input, show only selected color block</legend>
         <np-ui-color-picker [hideColorInput]="true" [required]="true"></np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>10. required validation</legend>
-        <np-ui-color-picker [required]="true" [name]="'txtColorCode'"></np-ui-color-picker>
+        <legend>9. required validation</legend>
+        <np-ui-color-picker [required]="true" [name]="'txtColorCode'">
+        </np-ui-color-picker>
     </fieldset>
 </div>

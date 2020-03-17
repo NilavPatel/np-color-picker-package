@@ -16,6 +16,7 @@ export class AppComponent {
   currentColor5: string;
   currentColor6: string;
   currentColor7: string;
+  currentColor9: string;
 
   isDisabled: boolean = true;
 
