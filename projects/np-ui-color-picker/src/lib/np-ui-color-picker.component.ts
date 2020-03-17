@@ -1,44 +1,43 @@
-import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges, HostListener, ViewEncapsulation, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, Input, ViewChild, ElementRef, HostListener, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'np-ui-color-picker',
   templateUrl: 'np-ui-color-picker.component.html',
   styleUrls: ['np-ui-color-picker.component.css'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NpUiColorPickerComponent),
+      multi: true
+    }
+  ]
 })
-export class NpUiColorPickerComponent implements OnInit {
+export class NpUiColorPickerComponent implements ControlValueAccessor {
 
-  _value: string;
-  _isOpen: boolean = false;
-  _stripColor: string = "#0000ff";
-  _currentCursorColor: string = "";
-  _colors: string[];
-  _isStripLoaded: boolean = false;
-  _x: string = '0px';
-  _y: string = '0px';
-  _isShowCursorDiv: boolean = false;
+  private _innerValue: any = '';
+  _isDisabled: boolean = false;
+  private onChangeCallback: (_: any) => void;
+  private onTouchedCallback: () => void;
 
-  @Input() value: string;
-  @Input() defaultOpen: boolean;
-  @Output() valueChange: EventEmitter<any> = new EventEmitter();
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
-  @Input() disabled: boolean;
-  @Input() iconCss: string;
+  @Input() required: boolean;
   @Input() colors: string[];
   @Input() placeholder: string = "";
   @Input() hideColorInput: boolean;
-  @Input() required: boolean = false;
-  @Input() name: string = "";
+  @Input() defaultOpen: boolean;
+  @Output() onChange: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild('colorpickerinput') input: ElementRef;
+  _isOpen: boolean = false;
+  _stripColor: string;
+  _colors: string[];
+  _currentCursorColor: string;
+  _x: string;
+  _y: string;
+  _isShowCursorDiv: boolean = false;
 
-  constructor(private elRef: ElementRef) {
-    this._colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688',
-      '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b', '#ccccccff'];
-  }
-
+  @ViewChild('colorpickerinput') _inputControl: ElementRef;
   @HostListener('document:click', ['$event'])
   clickOutSide(event: any) {
     if (!this.elRef.nativeElement.contains(event.target)) {
@@ -46,34 +45,14 @@ export class NpUiColorPickerComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  constructor(private elRef: ElementRef) {
+    this._colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688',
+      '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b', '#cccccc', '#ff0000',
+      '#00ff00', '#0000ff', '#DBFF33', '#33FFBD', '#660000', '#4C0099'];
   }
 
   ngAfterViewInit() {
     if (this.defaultOpen) {
-      this._updateStripCanvas();
-      this._updateCanvas();
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.value != undefined && changes.value.currentValue != this._value) {
-      this._value = changes.value.currentValue;
-      this._currentCursorColor = changes.value.currentValue;
-      this._stripColor = changes.value.currentValue;
-    }
-    if (changes.colors) {
-      this._colors = this.colors;
-    }
-  }
-
-  _toggleColorPicker() {
-    if (this.disabled) {
-      return;
-    }
-    this._isOpen = !this._isOpen;
-    if (this._isOpen) {
-      this.input.nativeElement.focus();
       setTimeout(() => {
         this._updateStripCanvas();
         this._updateCanvas();
@@ -81,41 +60,77 @@ export class NpUiColorPickerComponent implements OnInit {
     }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.colors) {
+      this._colors = this.colors;
+    }
+  }
+
+  get value(): any {
+    return this._innerValue;
+  };
+
+  set value(v: any) {
+    if (v !== this._innerValue) {
+      this._innerValue = v;
+      this._stripColor = v;
+      this.onChangeCallback(v);
+      this.onTouchedCallback();
+      if (this.onChange) {
+        this.onChange.emit(v);
+      }
+    }
+  }
+
+  writeValue(v: any): void {
+    if (v !== this._innerValue) {
+      this._innerValue = v;
+      this._stripColor = v;
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeCallback = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouchedCallback = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    this._isDisabled = isDisabled;
+  }
+
+  _toggleColorPicker() {
+    if (this._isOpen) {
+      this._close();
+    } else {
+      this._open();
+    }
+  }
+
   _open() {
-    if (this.defaultOpen == true) {
+    if (this.defaultOpen == true || this._isDisabled) {
       return;
     }
-    this.input.nativeElement.focus();
+    this._inputControl.nativeElement.focus();
     this._isOpen = true;
     setTimeout(() => {
       this._updateStripCanvas();
       this._updateCanvas();
     }, 10);
+    this.onTouchedCallback();
   }
 
   _close() {
-    if (this.defaultOpen == true) {
+    if (this.defaultOpen == true || this._isDisabled) {
       return;
     }
     this._isShowCursorDiv = false;
     this._isOpen = false;
   }
 
-  _onInputChange() {
-    if (this._value && this._value != null && this._value.length > 0 && !this._value.includes('#')) {
-      this._value = "#" + this._value;
-    }
-    this.value = this._value;
-    this._currentCursorColor = this._value;
-    this._stripColor = this._value;
-    this.valueChange.emit(this._value);
-    this.onChange.emit(this._value);
-  }
-
   _updateStripCanvas() {
-    if (this._isStripLoaded) {
-      return;
-    }
     var strip = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-strip');
     var ctx2 = strip.getContext('2d');
     ctx2.rect(0, 0, 30, 200);
@@ -137,7 +152,7 @@ export class NpUiColorPickerComponent implements OnInit {
     var ctx1 = block.getContext('2d');
     var ctx2 = strip.getContext('2d');
 
-    ctx1.fillStyle = this._stripColor.length > 0 ? this._stripColor : this.value;
+    ctx1.fillStyle = this._stripColor ? this._stripColor : (this.value ? this.value : "#ff0000");
     ctx1.fillRect(0, 0, 200, 200);
 
     var grdWhite = ctx2.createLinearGradient(0, 0, 200, 0);
@@ -153,42 +168,13 @@ export class NpUiColorPickerComponent implements OnInit {
     ctx1.fillRect(0, 0, 200, 200);
   }
 
-  _clickStrip(e: any, isUpdateColor: boolean) {
-    this._isShowCursorDiv = true;
-    this._x = (e.pageX + 5) + 'px';
-    this._y = (e.pageY + 5) + 'px';
-    var strip = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-strip');
-    var ctx2 = strip.getContext('2d');
-    var x = e.offsetX;
-    var y = e.offsetY;
-    var imageData = ctx2.getImageData(x, y, 1, 1).data;
-    if (isUpdateColor) {
-      this._stripColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
-      this._currentCursorColor = this._stripColor;
-      this._updateCanvas();
-    } else {
-      this._currentCursorColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
-    }
+  _clickStripeColor(e: any) {
+    this._stripColor = this._getColorFromClickevent(e, '.np-canvas-strip');
+    this._updateCanvas();
   }
 
-  _changeColor(e: any, isUpdateColor: boolean) {
-    this._isShowCursorDiv = true;
-    this._x = (e.pageX + 5) + 'px';
-    this._y = (e.pageY + 5) + 'px';
-    var block = <HTMLCanvasElement>this.elRef.nativeElement.querySelector('.np-canvas-block');
-    var ctx1 = block.getContext('2d');
-    var x = e.offsetX;
-    var y = e.offsetY;
-    var imageData = ctx1.getImageData(x, y, 1, 1).data;
-    if (isUpdateColor) {
-      this._value = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
-      this.value = this._value;
-      this._currentCursorColor = this._value;
-      this.valueChange.emit(this._value);
-      this.onChange.emit(this._value);
-    } else {
-      this._currentCursorColor = this._fullColorHex(imageData[0], imageData[1], imageData[2]);
-    }
+  _clickBlockColor(e: any) {
+    this.value = this._getColorFromClickevent(e, '.np-canvas-block');
   }
 
   _fullColorHex(r: number, g: number, b: number) {
@@ -206,32 +192,36 @@ export class NpUiColorPickerComponent implements OnInit {
     return hex;
   };
 
-  _onMouseLeaveStrip($event: any) {
+  _onMouseLeaveStrip(e: any) {
     this._isShowCursorDiv = false;
-    this._currentCursorColor = this._value;
   }
 
-  _onMouseLeaveBlock($event: any) {
+  _onMouseLeaveBlock(e: any) {
     this._isShowCursorDiv = false;
-    this._currentCursorColor = this._value;
+  }
+
+  _onMouseOverStrip(e: any) {
+    this._isShowCursorDiv = true;
+    this._x = (e.pageX + 5) + 'px';
+    this._y = (e.pageY + 5) + 'px';
+    this._currentCursorColor = this._getColorFromClickevent(e, '.np-canvas-strip');
+  }
+
+  _onMouseOverBlock(e: any) {
+    this._isShowCursorDiv = true;
+    this._x = (e.pageX + 5) + 'px';
+    this._y = (e.pageY + 5) + 'px';
+    this._currentCursorColor = this._getColorFromClickevent(e, '.np-canvas-block');
   }
 
   _onClickColorBlock(color: string) {
     if (color == undefined || color == null) {
       this.value = null;
-      this._value = null;
-      this._currentCursorColor = null;
-      this.valueChange.emit(null);
-      this.onChange.emit(null);
       return;
     }
     this.value = color;
-    this._value = color;
-    this._currentCursorColor = color;
     this._stripColor = color;
-    this.valueChange.emit(color);
     this._updateCanvas();
-    this.onChange.emit(color);
   }
 
   _currentHexToRGB() {
@@ -248,22 +238,27 @@ export class NpUiColorPickerComponent implements OnInit {
     return rgb ? rgb.r + ", " + rgb.g + ", " + rgb.b : "";
   }
 
-  _onOkClick() {
-    this._close();
-  }
-
-  getSelectedHEX() {
-    return this._value;
-  }
-
   getSelectedRGB() {
-    return this._hexToRgb(this._value);
+    return this._hexToRgb(this.value);
   }
 
   _clear() {
-    this._value = null;
     this.value = null;
-    this.valueChange.emit(null);
     this._isOpen = false;
+  }
+
+  _onInputChange() {
+    if (this.value && !this.value.includes('#')) {
+      this.value = "#" + this.value;
+    }
+  }
+
+  _getColorFromClickevent(e: any, clickedElement: string) {
+    var strip = <HTMLCanvasElement>this.elRef.nativeElement.querySelector(clickedElement);
+    var ctx2 = strip.getContext('2d');
+    var x = e.offsetX;
+    var y = e.offsetY;
+    var imageData = ctx2.getImageData(x, y, 1, 1).data;
+    return this._fullColorHex(imageData[0], imageData[1], imageData[2]);
   }
 }

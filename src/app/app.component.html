@@ -6,66 +6,66 @@
 <div>
     <fieldset>
         <legend>1. Default color picker</legend>
-        <np-ui-color-picker [(value)]="currentColor1"></np-ui-color-picker>
-        <div>Selected Color id: {{currentColor1}}</div>
+        <np-ui-color-picker [(ngModel)]="currentColor1"></np-ui-color-picker>
+        <div>Selected color code: {{currentColor1}}</div>
+        <button (click)="currentColor1 = '#ed5a0f'">Set color #ed5a0f</button>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>2. OnChange event for color picker</legend>
-        <np-ui-color-picker [(value)]="currentColor2" (onChange)="onColorSelect($event)"></np-ui-color-picker>
-    </fieldset>
-</div>
-
-<div>
-    <legend>3. Set color to color picker</legend>
-    <fieldset>
-        <np-ui-color-picker [(value)]="currentColor3"></np-ui-color-picker>
-        <button type="button" (click)="setBlackColor()">Set Black Color</button>
+        <legend>2. Disabled color picker</legend>
+        <np-ui-color-picker [(ngModel)]="currentColor2" disabled></np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>4. Always open color picker</legend>
-        <np-ui-color-picker [(value)]="currentColor4" [defaultOpen]="true"></np-ui-color-picker>
+        <legend>3. Required Validation in color picker</legend>
+        <np-ui-color-picker [(ngModel)]="currentColor3" [required]="true" #validations="ngModel">
+        </np-ui-color-picker>
+        <div *ngIf="validations.control.touched && validations.control.errors?.required" class="color-red">
+            Color is required.
+        </div>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>5. Set existing colors list</legend>
-        <np-ui-color-picker [(value)]="currentColor5" [colors]="existingColors"></np-ui-color-picker>
+        <legend>4. Default open color picker</legend>
+        <np-ui-color-picker [(ngModel)]="currentColor4" [defaultOpen]="true">
+        </np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>6. Set Disable/Enabled</legend>
-        <np-ui-color-picker [(value)]="currentColor7" [disabled]="isDisabled"></np-ui-color-picker>
-        <button (click)="isDisabled = !isDisabled">Disable/Enabled</button>
+        <legend>5. Pre-defined color list in color picker</legend>
+        <np-ui-color-picker [(ngModel)]="currentColor5" [colors]="existingColors5">
+        </np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>7. Set Placeholder</legend>
-        <np-ui-color-picker [placeholder]="'Set color for header'"></np-ui-color-picker>
+        <legend>6. Add placeholder</legend>
+        <np-ui-color-picker [(ngModel)]="currentColor6" [placeholder]="'Select font color'">
+        </np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>8. hide color input, show only selected color block</legend>
-        <np-ui-color-picker [hideColorInput]="true" [required]="true"></np-ui-color-picker>
+        <legend>7. Hide color input control</legend>
+        <np-ui-color-picker [(ngModel)]="currentColor7" [hideColorInput]="true">
+        </np-ui-color-picker>
     </fieldset>
 </div>
 
 <div>
     <fieldset>
-        <legend>9. required validation</legend>
-        <np-ui-color-picker [required]="true" [name]="'txtColorCode'">
+        <legend>8. Bind change event</legend>
+        <np-ui-color-picker [(ngModel)]="currentColor8" (onChange)="onChangeColor($event)">
         </np-ui-color-picker>
     </fieldset>
 </div>

@@ -1,7 +1,7 @@
 # np-ui-color-picker
-Color picker custom component for Angular 9 and 9+, Created using only Angular.
+Angular 9 Native color picker component.
 
-## Check demo [Here](https://stackblitz.com/edit/np-ui-color-picker)
+## Check demo [Here](https://stackblitz.com/edit/np-ui-color-picker9)
 
 ## NPM
 ``$ npm install np-ui-color-picker``
@@ -9,34 +9,28 @@ Color picker custom component for Angular 9 and 9+, Created using only Angular.
 ## HTML
 ````html
 <np-ui-color-picker 
-    [(value)]="currentColor"
-    [isOkButton] = "true"
-    (onChange)="onColorSelect($event)">
+    [(ngModel)]="currentColor">
 </np-ui-color-picker>
 ````
 
 ## Properties
-1.  `value` : string  
+1.  `ngModel` : string  
     Selected color variable for two way data binding.  
 2.  `disabled` : boolean  
     Set component is disabled or not.  
-3.  `defaultOpen` : boolean  
-    Set color picker by default open or not.  
-4.  `colors` : string[]  
-    List of pre defined colors, if not passed this variable, default color list will be displayed.  
-5.  `placeholder` : string  
-    Set placeholder for color picker.  
-6.  `hideColorInput` : boolean  
-    Hide color input box, only show seleced color block.  
-7.  `required` : boolean  
+3.  `required` : boolean  
     Default value is false. add required attribute to input textbox.  
-8. `name` : string  
-    Add name attribute to input textbox.  
+4.  `defaultOpen` : boolean  
+    Set color picker by default open or not.  
+5.  `colors` : string[]  
+    List of pre defined colors, if not passed this variable, default color list will be displayed.  
+6.  `placeholder` : string  
+    Set placeholder for color picker.  
+7.  `hideColorInput` : boolean  
+    Hide color input box, only show seleced color block.  
 
 ## Apis  
-1.  `getSelectedHEX()`  
-    Get selected color in HEX format.  
-2.  `getSelectedRGB()`  
+1.  `getSelectedRGB()`  
     Get selected color in RGB format.  
 
 ## Methods

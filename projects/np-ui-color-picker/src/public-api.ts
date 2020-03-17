@@ -3,4 +3,3 @@
  */
 
 export * from './lib/np-ui-color-picker.component';
-export * from './lib/np-ui-color-picker.module';
