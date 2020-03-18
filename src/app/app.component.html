@@ -20,14 +20,17 @@
 </div>
 
 <div>
-    <fieldset>
-        <legend>3. Required Validation in color picker</legend>
-        <np-ui-color-picker [(ngModel)]="currentColor3" [required]="true" #validations="ngModel">
-        </np-ui-color-picker>
-        <div *ngIf="validations.control.touched && validations.control.errors?.required" class="color-red">
-            Color is required.
-        </div>
-    </fieldset>
+    <form #form="ngForm">
+        <fieldset>
+            <legend>3. Required Validation in color picker</legend>
+            <np-ui-color-picker [(ngModel)]="currentColor3" required #validations="ngModel" name="colorPicker">
+            </np-ui-color-picker>
+            <div *ngIf="validations.control.touched && validations.control.errors?.required" class="color-red">
+                Color is required.
+            </div>
+            <p>Form valid: {{ form.valid }}</p>
+        </fieldset>
+    </form>
 </div>
 
 <div>
