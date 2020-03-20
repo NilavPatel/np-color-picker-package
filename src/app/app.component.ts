@@ -9,15 +9,19 @@ export class AppComponent {
 
   title = 'np-ui-color-picker-package';
 
-  currentColor1: string = "#5fe64b";
-  currentColor2: string = "#5fe64b";
-  currentColor3: string;
-  currentColor4: string = "#5fe64b";
-  currentColor5: string;
+  color1: string = "#5fe64b";
+  color2: string = "#5fe64b";
+  color3: string;
+  color4: string = "#5fe64b";
+  color4Required = false;
+  color4Disabled = false;
+  color5: string;
   existingColors5 = ['#FFFFFF', '#C0C0C0', '#808080', '#000000'];
-  currentColor6: string;
-  currentColor7: string;
-  currentColor8: string;
+  color6: string;
+  color7: string;
+  color8: string;
+  color9: string;
+  color10: string;
 
   onChangeColor(e) {
     alert("Selected color is " + e);

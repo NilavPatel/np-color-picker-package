@@ -28,6 +28,8 @@ Angular 9 Native color picker component.
     Set placeholder for color picker.  
 7.  `hideColorInput` : boolean  
     Hide color input box, only show seleced color block.  
+8. `styleClass` : string  
+    set name of css class.  
 
 ## Apis  
 1.  `getSelectedRGB()`  
